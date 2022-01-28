@@ -1,5 +1,6 @@
+//xndir tpel shorti, longi, inti, floati ev doublei minimal ev maximal arjeqner@
+
 #include <iostream>
-#include <climits>
 #include <limits>
 using namespace std;
 
@@ -11,14 +12,8 @@ void showMinMax() {
    cout << endl;
 }
 int main()
-//{int a,b;
-//	cout<<"int max is   "<< INT_MAX <<endl;
-//	cout<<"int min is   "<< INT_MIN <<endl;
-//	cout<<"long max is  "<< LONG_MAX <<endl;
-//	cout<<"long min is  "<< LONG_MIN <<endl;
-//	cout<<"double max is  "<< 
 {
-cout << "short:" << endl;
+	cout << "short:" << endl;
    showMinMax<short>();
    cout << "int:" << endl;
    showMinMax<int>();

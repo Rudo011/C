@@ -1,3 +1,6 @@
+//xndir, tpel 2-i n astichan@, ogtagorcelov bitayin gorcoxutyunner@
+
+
 #include <iostream>
 using namespace std;
 int main()

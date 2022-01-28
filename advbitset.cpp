@@ -1,3 +1,6 @@
+//tpel a tiv@, vortex popoxvac e b-erord bit@ ogtagorcelov bitayin gorcoxutyunner@
+
+
 #include <iostream>
 using namespace std;
 int main()
@@ -7,7 +10,7 @@ int main()
 
 	cin>>a;
 	cin>>b;
-	if(!cin)
+	if(!cin);
 	else "Not number";
 
 	c=(a|(1<<b-1));		

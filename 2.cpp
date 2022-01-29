@@ -1,3 +1,6 @@
+//nermucel tasakan hamakargi tiv, stanal ayn erkuakan hamakargum
+
+
 #include <iostream>
 using namespace std;
 int main()

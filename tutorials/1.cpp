@@ -1,12 +1,12 @@
 //stugum ete i tiv@ mec e 100ic tpum e
 
 #include <iostream>
-using namespace std;
 int main()
-{int i;
-	cout<<"nermuceq tiv"<<endl;
-	cin>>i;
-	if (i>100)
-	cout<<"che chi exni hnger"<<endl;
+{
+	int i;
+	std::cout << "nermuceq tiv" << std::endl;
+	std::cin>>i;
+	if ( i > 100 )
+	std::cout << "che chi exni hnger" << std::endl;
 	return 0;
 }

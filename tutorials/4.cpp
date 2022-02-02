@@ -1,14 +1,17 @@
 //hashvum e 1 ic minchev mer nshvac tvi, bolor tveri gumar@
 
 #include <iostream>
-using namespace std;
 int main()
-{int x,y=0,z;
-	cout<<"nermuceq tiv"<<endl;
-	cin>>z;
-	for (x=1;x<=z;x++){
-		y=y + x;}
-	cout<<"gumar@ havasar e  - "<<y<<endl;
+{
+	int x;
+	int y=0;
+	int z;
+	std::cout << "nermuceq tiv" << std::endl;
+	std::cin >> z;
+	for ( x = 1; x<=z; x++){
+		y = y + x;
+	}
+	std::cout << "gumar@ havasar e  - " << y << std::endl;
 	return 0;
 }
 

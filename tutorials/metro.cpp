@@ -1,56 +1,51 @@
 #include <iostream>
-using namespace std;
 int main()
 {
+	int number = 0;
+	bool x = true;
 
-	int number=0;
-	bool x=true;
-
-		cout<<"Введите номер станции метро, для подсчета времени"<<endl;
-		cout<<"1 - станция Сасунци Давид"<<endl;
-		cout<<"2 - станция Барекамутюн"<<endl;
-		cout<<"3 - станция Киликиа"<<endl;
-		cout<<"4 - станция Баграмян"<<endl;
-		cout<<"5 - станция Московская"<<endl;
-
-
-do
-{
-cin>>number;
+	std::cout << "Введите номер станции метро, для подсчета времени" << std::endl;
+	std::cout << "1 - станция Сасунци Давид" << std::endl;
+	std::cout << "2 - станция Барекамутюн" << std::endl;
+	std::cout << "3 - станция Киликиа" << std::endl;
+	std::cout << "4 - станция Баграмян" << std::endl;
+	std::cout << "5 - станция Московская" << std::endl;
 
 
-	switch (number)
-{
-		case 1:
-		cout<<"До станции метро Сасунци Давид - 8 минут"<<endl;
-		break;
+	do {
+		std::cin >> number;
 
-		case 2:
-		cout<<"До станции метро Барекамутюн - 15 минут"<<endl;
-		break;
 
-		case 3:
-		cout<<"До станции метро Киликиа - 18 минут"<<endl;
-		break;
+		switch ( number ) {
+			case 1:
+			std::cout <<"До станции метро Сасунци Давид - 8 минут" << std::endl;
+			break;
 
-		case 4:
-		cout<<"До станции метро Баграмян - 21 минут"<<endl;
-		break;
+			case 2:
+			std::cout << "До станции метро Барекамутюн - 15 минут" << std::endl;
+			break;
 
-		case 5:
-		cout<<"До станции метро Московская - 26 минут"<<endl;
-		break;
+			case 3:
+			std::cout << "До станции метро Киликиа - 18 минут" << std::endl;
+			break;
 
-		default:
-		cout<<"Такой станции не существует!"<<endl;
-		cout<<"Пожалуйста введите правильный номер! (1-5)"<<endl;
+			case 4:
+			std::cout << "До станции метро Баграмян - 21 минут" << std::endl;
+			break;
 
+			case 5:
+			std::cout << "До станции метро Московская - 26 минут" << std::endl;
+			break;
+
+			default:
+			std::cout << "Такой станции не существует!" << std::endl;
+			std::cout << "Пожалуйста введите правильный номер! (1-5)" << std::endl;
+
+		}
+
+		if ( number >= 1 && number <= 5 )
+		x = false;
+	}
+	while ( x );
+	return 0;
 }
-
-	if (number>=1 && number<=5)
-	x=false;
-}
-		while (x);
-return 0;
-}
-

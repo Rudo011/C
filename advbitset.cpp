@@ -1,19 +1,16 @@
 //tpel a tiv@, vortex popoxvac e b-erord bit@ ogtagorcelov bitayin gorcoxutyunner@
 
-
 #include <iostream>
-using namespace std;
 int main()
 {
-	int a,b,c;
-			
+	int a;
+	int b;
+	int c;
 
-	cin>>a;
-	cin>>b;
-	if(!cin);
-	else "Not number";
+	std::cin >> a;
+	std::cin >> b;
 
-	c=(a|(1<<b-1));		
-	cout<<c<<endl;
+	c= ( a | ( 1 << b - 1) );		
+	std::cout << c << std::endl;
 	return 0;
 }

@@ -1,29 +1,28 @@
 //nerkayacnel 10akan hamkargi tiv@ erkuakan hamakargum
 
 #include <iostream>
-using namespace std;
 
 int main ()
 {
-    int i;
-    int x;
+	int i;
+	int x;
 
-    cout << "Nermuceq tiv: ";
-    cin >> x;
-    cout << "Tiv@ erkuakan hamakargum: ";
+	std::cout << "Nermuceq tiv: ";	
+	std::cin >> x;
+	std::cout << "Tiv@ erkuakan hamakargum: ";
 
-    for (i = 31; i >= 0; i--)
-        {
-        if ((1 << i) & x)
-                {
-            cout << "1";
-        }
-        else
-        {
-            cout << "0";
-        }
-    }
+	for (i = 31; i >= 0; i--) {
+        
+		if ((1 << i) & x) {
+                
+		std::cout << "1";
+        	}
+	else {
+        
+		std::cout << "0";
+	}
+	}
 
-    cout << endl;
+std::cout << std::endl;
 return 0;
 }

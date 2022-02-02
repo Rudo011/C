@@ -1,19 +1,18 @@
 #include <iostream>
-using namespace std;
 int calculate(int x, int y, char op)
 {
-	switch (op)
-	{
+	switch (op){
+
 		case '+':
-			return x+y;
+			return x + y;
 		case '-':
-			return x-y;
+			return x - y;
 		case '*':
-			return x*y;
+			return x * y;
 		case '/':
-			return x/y;
+			return x / y;
 		case '%':
-			return x%y;
+			return x % y;
 		default:
 			std::cout<<"Символ не найден!";
 			return 0;
@@ -22,19 +21,16 @@ int calculate(int x, int y, char op)
 
 int main()
 {
-		cout<<"Введите первое число - ";
-		int x;	
-		cin>>x;
-
-		cout<<"Введите второе число - ";
-		int y;
-		cin>>y;
-
-		cout<<"Введите математический символ(+,-,*,/,%): ";
-		char op;
-		cin>>op;
-
-		cout<<x<<" "<<op<<" "<<y<<" = " << calculate(x,y,op) <<"\n";
+	std::cout << "Введите первое число - ";
+	int x;	
+	std::cin >> x;
+	std::cout << "Введите второе число - ";
+	int y;
+	std::cin >> y;
+	std::cout << "Введите математический символ(+,-,*,/,%): ";
+	char op;
+	std::cin >> op;
+	std::cout << x << " " << op << " " << y << " = " << calculate( x, y, op ) << "\n";
 
 	return 0;
 }

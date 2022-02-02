@@ -2,27 +2,42 @@
 
 #include <iostream>
 #include <limits>
-using namespace std;
-
 
 template<typename T>
 void showMinMax() {
-   cout << "min: " << numeric_limits<T>::min() << endl;
-   cout << "max: " << numeric_limits<T>::max() << endl;
-   cout << endl;
+	std::cout << "min: " << std::numeric_limits<T>::min() << std::endl;	
+	std::cout << "max: " << std::numeric_limits<T>::max() << std::endl;
+	std::cout << std::endl;
 }
+
 int main()
 {
-	cout << "short:" << endl;
-   showMinMax<short>();
-   cout << "int:" << endl;
-   showMinMax<int>();
-   cout << "long:" << endl;
-   showMinMax<long>();
-   cout << "float:" << endl;
-   showMinMax<float>();
-   cout << "double:" << endl;
-   showMinMax<double>();
+	int x;
+	short y;
+	long f;
+	float t;
+	double k;
 
+	std::cout << "short:" << std::endl;
+	showMinMax<short>();
+	std::cout << "Количество байт = " << sizeof(y) << std::endl;
+	std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << std::endl;
+	std::cout << "int:" << std::endl;
+	showMinMax<int>();
+	std::cout << "Количество байт = " << sizeof(x) << std::endl;
+	std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << std::endl;
+	std::cout << "long:" << std::endl;
+	showMinMax<long>();
+	std::cout << "Количество байт = " << sizeof(f) << std::endl;
+	std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << std::endl;
+	std::cout << "float:" << std::endl;
+	showMinMax<float>();
+	std::cout << "Количество байт = " << sizeof(t) << std::endl;
+	std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << std::endl;
+	std::cout << "double:" << std::endl;	
+	showMinMax<double>();
+	std::cout << "Количество байт = " << sizeof(k) << std::endl;
+	std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << std::endl;
+	
 	return 0;
 }

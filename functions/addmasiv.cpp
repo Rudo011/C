@@ -19,6 +19,8 @@ void installer ( int first [5], int second [7] )
 
 int main()
 {
+	int min;
+	int max;
 	installer ( first, second );
 	std::cout << "first = ";
 	for (int i = 0; i < 5; i++)
@@ -32,5 +34,14 @@ int main()
 		std::cout << "[" << second [i] << "]";
 	}
 	std::cout << std::endl;
+
+	max=min=first[0];
+	for ( int i=1; i<5; i++)
+	{
+		if (max<first[i]) max=first[i];
+		if (min>first[i]) min=first[i];
+	}
+	std::cout << "max = " << max << std::endl;
+	std::cout << "min = " << min << std::endl;
 	return 0;
 }

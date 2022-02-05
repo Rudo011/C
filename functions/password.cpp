@@ -1,6 +1,16 @@
 #include <iostream>
 #include <string>
 
+void hello () {
+    
+    std::cout << "Hello, my friend" << std::endl;
+}
+
+void Goodbye () {
+
+    std::cout << "Goodbye, my friend" << std::endl;
+}
+
 std::string check_pass (std::string password)
 {
     std::string valid_pass = "qwerty123";
@@ -21,7 +31,13 @@ int main()
     std::cin >> user_pass;
     std::string error_msg = check_pass (user_pass);
     std::cout << error_msg << std::endl;
-    return 0;
-}	
 
-	
+    if ( user_pass == "qwerty123" ) {
+	hello(); 
+    }
+    else {
+	Goodbye();
+    }
+    return 0;
+
+}	

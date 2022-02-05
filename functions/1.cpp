@@ -18,7 +18,7 @@ int main()
 {    
     std::string user_pass;
     std::cout << "Введите пароль: ";
-    getline (std::cin, user_pass);
+    std::cin >> user_pass;
     std::string error_msg = check_pass (user_pass);
     std::cout << error_msg << std::endl;
     return 0;

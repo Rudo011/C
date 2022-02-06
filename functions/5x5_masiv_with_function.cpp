@@ -4,9 +4,9 @@
 
 const int SIZE = 5;
 
-void fillandShow ( int [] [SIZE], const int size);
-int min ( int [] [SIZE], const int size);
-int max ( int [] [SIZE], const int size);
+void fillandShow ( int [] [SIZE], const int SIZE);
+int min ( int [] [SIZE], const int SIZE);
+int max ( int [] [SIZE], const int SIZE);
 
 int main()
 {
@@ -21,13 +21,13 @@ int main()
 	return 0;
 }
 
-void fillandShow ( int arr [] [SIZE], const int size)
+void fillandShow ( int arr [] [SIZE], const int SIZE)
 {
-	for ( int i = 0; i < size; i++ )
+	for ( int i = 0; i < SIZE; i++ )
 	{
 		std::cout << "| ";
 		
-		for ( int j = 0; j < size; j++ )
+		for ( int j = 0; j < SIZE; j++ )
 		{
 			arr [i] [j] = 30 + rand() % 31;
 			std::cout << arr[i][j] << " ";
@@ -36,12 +36,12 @@ void fillandShow ( int arr [] [SIZE], const int size)
 	}
 }
 
-int min ( int arr [][SIZE], const int size)
+int min ( int arr [][SIZE], const int SIZE)
 {
 	int min = arr[0][0];
-	for ( int i = 0; i < size; i++ )
+	for ( int i = 0; i < SIZE; i++ )
 	{
-		for ( int j = 0; j < size; j++ )
+		for ( int j = 0; j < SIZE; j++ )
 		{
 			if ( arr[i][j] < min )
 			min = arr[i][j];
@@ -50,12 +50,12 @@ int min ( int arr [][SIZE], const int size)
 	return min;
 }
 
-int max ( int arr [][SIZE], const int size)
+int max ( int arr [][SIZE], const int SIZE)
 {
 	int max = arr [0][0];
-	for ( int i = 0; i < size; i++ )
+	for ( int i = 0; i < SIZE; i++ )
 	{
-		for ( int j = 0; j < size; j++)
+		for ( int j = 0; j < SIZE; j++)
 		{
 			if ( arr[i][j] > max )
 			max = arr [i][j];

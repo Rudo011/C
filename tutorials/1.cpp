@@ -1,12 +1,13 @@
-//stugum ete i tiv@ mec e 100ic tpum e
+//xndir, tpel 2-i n astichan@, ogtagorcelov bitayin gorcoxutyunner@
+
 
 #include <iostream>
 int main()
 {
-	int i;
-	std::cout << "nermuceq tiv" << std::endl;
-	std::cin>>i;
-	if ( i > 100 )
-	std::cout << "che chi exni hnger" << std::endl;
+	int n;
+	int y;
+	std::cin >> n;
+	y=1<<n-1;
+	std::cout << y << std::endl;
 	return 0;
 }

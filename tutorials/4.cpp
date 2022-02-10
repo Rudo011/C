@@ -1,17 +1,24 @@
-//hashvum e 1 ic minchev mer nshvac tvi, bolor tveri gumar@
-
 #include <iostream>
+#include <cmath>
 int main()
-{
+{	
 	int x;
-	int y=0;
-	int z;
-	std::cout << "nermuceq tiv" << std::endl;
-	std::cin >> z;
-	for ( x = 1; x<=z; x++){
-		y = y + x;
+	int y;
+	int i;
+	std::cout << "nermuceq tiv  ";
+	std::cin >> x;
+	for ( i=31; i>=0; i-- ) {
+	
+		if ( ( 1 << i ) & x ) {
+	 
+			std::cout << "1";
+		} 
+	else {
+	 
+		std::cout << "0";
 	}
-	std::cout << "gumar@ havasar e  - " << y << std::endl;
+	}
+
+	std::cout << std::endl;
 	return 0;
 }
-

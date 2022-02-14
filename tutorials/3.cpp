@@ -1,16 +1,28 @@
-//nuyn 1.cpp bayc else hramanov
+//nerkayacnel 10akan hamkargi tiv@ erkuakan hamakargum
 
 #include <iostream>
-int main()
+
+int main ()
 {
+	int i;
 	int x;
-	std::cout << "nermuceq tiv" << std::endl;
+
+	std::cout << "Nermuceq tiv: ";	
 	std::cin >> x;
-	if ( x > 100 ){
-		std::cout << "tochnia" << std::endl;
+	std::cout << "Tiv@ erkuakan hamakargum: ";
+
+	for (i = 31; i >= 0; i--) {
+        
+		if ((1 << i) & x) {
+                
+		std::cout << "1";
+        	}
+	else {
+        
+		std::cout << "0";
 	}
-	else{
-		std::cout << "100ic mec tiv mutqagri" << std::endl;
 	}
+
+std::cout << std::endl;
 return 0;
-}	
+}

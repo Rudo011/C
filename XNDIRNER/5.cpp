@@ -4,7 +4,6 @@
 
 size_t A,B;
 size_t a,b;
-int o;
 const size_t WIDTH = 25;
 const size_t HEIGTH = 50;
 void matrix_lcnel (int[WIDTH][HEIGTH], size_t, size_t);
@@ -25,26 +24,20 @@ int main()
 	std::cout << "b - ";
 	std::cin >> b;
 	
-	int little_matrix[a][b] = {};
+	int little_matrix[a-A+1][b-B+1] = {0};
 
-	for ( int h = 0; h < a; ++h )
+	for ( int i = A; i <= a; ++i )
 	{
-		for ( int k = 0; k < b; ++k )
+		for ( int j = B; j <= b; ++j )
 		{
-			for ( int i = A; i < a; ++i )
-			{
-				for ( int j = B; j < b; ++j )
-				{
-					little_matrix[k][h] = matrix[i][j];
-				}
-			}
+			little_matrix[i-A][j-B] = matrix[i][j];		
 		}
 	}
 
-	for ( int i = 0; i < a; i++ )
+	for ( int i = 0; i < a-A+1; i++ )
 	{
 		std::cout << "|";
-		for ( int j = 0; j < b; j++ )
+		for ( int j = 0; j < b-B+1; j++ )
 		{
 			std::cout << little_matrix[i][j];
 		}

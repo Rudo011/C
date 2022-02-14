@@ -13,6 +13,7 @@ int main()
 	{
 		masiv[i] = rand() % 10000;
 	}
+	masiv[993] = 123124;
 
 	for ( int i = 0; i < 1000; i++ )
 	{
@@ -35,6 +36,17 @@ int main()
 	for ( int i = 0; i < 1000; i++ )
 	{
 		std::cout << masiv[i] << std::endl;
+	}
+	
+	for ( int i = 0; i < 1000; i++ )
+	{
+		for ( int j = i + 1; j < 1000; j++ )
+		{
+			if ( masiv[i] > masiv[j] )
+			{
+				std::cout << "TEST PROVALEN" << std::endl;
+			}
+		}
 	}
 	return 0;
 }

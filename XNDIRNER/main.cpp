@@ -4,6 +4,9 @@
 #include "6.hpp"
 
 mat* create(size_t, size_t);
+void print(mat*);
+mat* sum(mat*, mat*);
+void deleteMat(mat*);
 
 int main()
 {
@@ -18,22 +21,17 @@ int main()
 	mat* masiv1 = create(wight, heigth);
 	
 	std::cout << "Masivner@ gumarumic araj" << std::endl;
-	
+	print (masiv1);
+	std::cout << std::endl;
 	mat* masiv2 = create(wight, heigth);
+
+	print (masiv2);
 
 	std::cout << std::endl << " Masivner@ gumarumic heto" << std::endl;
 
-	for ( int i = 0; i < wight; ++i )
-	{
-		std::cout << "|";
-		for ( int j = 0; j < heigth; ++j )
-		{
-			masiv1->data[i][j] = masiv1->data[i][j] + masiv2->data[i][j];
-			std::cout << masiv1->data[i][j];
-		}
-		std::cout << "|" << std::endl;
-	}	
+	mat* Gumar = sum(masiv1, masiv2);
 
+	print (Gumar);
 
 	for (int i = 0; i < wight; ++i) 
 	{
@@ -46,6 +44,7 @@ int main()
 	{
 		delete []masiv2->data[i];
 	}
+
 	delete []masiv2->data;
 	delete masiv2;
 
@@ -63,13 +62,10 @@ mat* create(size_t wight, size_t heigth)
 	
 	for ( int i = 0; i < wight; ++i )
 	{
-		std::cout << "|";
 		for ( int j = 0; j < heigth; ++j )
 		{
 			data[i][j] = rand() % 2;
-			std::cout << data[i][j];
 		}
-		std::cout << "|" << std::endl;
 	}
 
 	mat* m = new mat;
@@ -77,4 +73,30 @@ mat* create(size_t wight, size_t heigth)
 	m->heigth = heigth;
 	m->data = data;
 	return m;
+}
+
+void print (mat* masiv1) {
+	
+	for ( int i = 0; i < masiv1->wight; ++i )
+	{
+		std::cout << "|";
+		for ( int j = 0; j < masiv1->heigth; ++j )
+		{
+			std::cout << masiv1->data[i][j];
+		}
+		std::cout << "|" << std::endl;
+	}
+}
+
+mat* sum (mat* masiv1, mat* masiv2)
+{
+	mat* result = create(masiv1->wight, masiv1->heigth);
+	for ( int i = 0; i < masiv1->wight; ++i )
+	{
+		for ( int j = 0; j < masiv1->heigth; ++j )
+		{
+			result->data[i][j] = masiv1->data[i][j] | masiv2->data[i][j];
+		}
+	}
+	return result;
 }

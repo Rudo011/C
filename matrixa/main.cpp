@@ -40,34 +40,53 @@ int main()
 	print (mult_4);
 	matrix_lcnel (mult_5, 1 + rand() % 5);
 	print (mult_5);
-	
-	size_t SIZE = size * 5;
-	
-	unsigned int** MASIV = new unsigned int*[SIZE];
 
-	for ( int i = 0; i < SIZE; ++i )
+	std::cout << std::endl;
+	
+	unsigned int** MASIV = new unsigned int*[size*2];
+
+	for ( int i = 0; i < size*2; ++i )
 	{
-		MASIV[i] = new unsigned int[SIZE];
+		MASIV[i] = new unsigned int[size*2];
 	}
 
-	for ( int i = 0; i < mult_1->wight; ++i )
+	for ( int i = 0; i < size*2; ++i )
 	{
-		for ( int j = 0; j < mult_1->heigth; ++j)
+		for ( int j = 0; j < size*2; ++j )
 		{
-			MASIV[i][j] = mult_1->data[i][j];
+			MASIV[i][j] = 0;
 		}
 	}
 	
-	for ( int i = mult_1->wight; i < mult_1->wight + mult_2->wight; ++i )
+	for ( int i = 0; i < size*2; ++i )
 	{
-		for ( int j = 0; j < mult_2->heigth; ++j )
+		for ( int j = 0; j < size*2; ++j )
 		{
-			MASIV[i][j] = mult_2->data[i-mult_1->wight][j];
+			if (i <= size-1)
+			{
+				MASIV[i][j] = mult_1->data[i][j];
+			}
+			if (i >= size)
+			{
+				MASIV[i][j] = mult_2->data[i-(size-1)][j-size];
+			}
+		}
+	}
+	
+	for ( int i = 0; i < size*2; ++i )
+	{
+		for ( int j = 0; j < size*2; ++j )
+		{
 			std::cout << MASIV[i][j];
 		}
 		std::cout << std::endl;
 	}
-				
+
+	for ( int i = 0; i < size*2; ++i )
+	{
+		delete []MASIV[i];
+	}
+	delete MASIV;
 
 	delete_vector (vec1_1);
 	delete_vector (vec1_2);

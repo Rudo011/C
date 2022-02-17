@@ -6,11 +6,11 @@
 
 mat* create (size_t wight, size_t heigth)
 {
-	unsigned int** data = new unsigned int*[wight];
+	int** data = new int*[wight];
 
 	for ( int i = 0; i < wight; ++i )
 	{
-		data[i] = new unsigned int[heigth];
+		data[i] = new int[heigth];
 	}
 	
 	for ( int i = 0; i < wight; ++i )
@@ -73,7 +73,7 @@ vector* create (size_t size)
 
 	for ( int i = 0; i < size; ++i )
 	{
-		data[i] = rand() % 2;
+		data[i] = 0;
 	}
 
 	vector* m = new vector;
@@ -94,11 +94,11 @@ void print(vector* m)
 
 mat* multi (vector* m, vector* n)
 {
-	unsigned int** data = new unsigned int*[m->size];	
+	int** data = new int*[m->size];	
 	
 	for ( int i = 0; i < m->size; ++i )
 	{
-		data[i] = new unsigned int[n->size];
+		data[i] = new int[n->size];
 	}
 
 	for ( int i = 0; i < m->size; ++i )
@@ -132,10 +132,10 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 	{
 		for ( int j = 0; j < matrix->heigth; ++j )
 		{
-			unsigned int bit = 0;
-			unsigned int red = rand() % 51;
-			unsigned int blue = rand() % 51;
-			unsigned int green = rand () % 51;
+			size_t bit = 0;
+			size_t red = rand() % 51;
+			size_t blue = rand() % 51;
+			size_t green = rand () % 51;
 
 			bit = bit | red;
 			bit = bit << 8;
@@ -143,6 +143,7 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 			bit = bit << 8;
 			bit = bit | green;
 			bit = bit << 8;
+			bit = bit | 0;
 	
 			matrix->data[i][j] = bit;
 		}
@@ -154,10 +155,10 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 	{
 		for ( int j = 0; j < matrix->heigth; ++j )
 		{
-			unsigned int bit = 0;
-			unsigned int red = 51 + rand() % 102;
-			unsigned int blue = 51 + rand() % 102;
-			unsigned int green = 51 + rand() % 102;
+			size_t bit = 0;
+			size_t red = 51 + rand() % 102;
+			size_t blue = 51 + rand() % 102;
+			size_t green = 51 + rand() % 102;
 
 			bit = bit | red;
 			bit = bit << 8;
@@ -165,6 +166,7 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 			bit = bit << 8;
 			bit = bit | green;
 			bit = bit << 8;
+			bit = bit | 0;
 
 			matrix->data[i][j] = bit;
 		}
@@ -176,10 +178,10 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 	{
 		for ( int j = 0; j < matrix->heigth; ++j )
 		{
-			unsigned int bit = 0;
-			unsigned int red = 102 + rand() % 153;
-			unsigned int blue = 102 + rand() % 153;
-			unsigned int green = 102 + rand() % 153;
+			size_t bit = 0;
+			size_t red = 102 + rand() % 153;
+			size_t blue = 102 + rand() % 153;
+			size_t green = 102 + rand() % 153;
 
 			bit = bit | red;
 			bit = bit << 8;
@@ -187,6 +189,7 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 			bit = bit << 8;
 			bit = bit | green;
 			bit = bit << 8;
+			bit = bit | 0;
 
 			matrix->data[i][j] = bit;
 		}
@@ -198,10 +201,10 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 	{
 		for ( int j = 0; j < matrix->heigth; ++j )
 		{
-			unsigned int bit = 0;
-			unsigned int red = 153 + rand() % 204;
-			unsigned int blue = 153 + rand() % 204;
-			unsigned int green = 153 + rand() % 204;
+			size_t bit = 0;
+			size_t red = 153 + rand() % 204;
+			size_t blue = 153 + rand() % 204;
+			size_t green = 153 + rand() % 204;
 
 			bit = bit | red;
 			bit = bit << 8;
@@ -209,6 +212,7 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 			bit = bit << 8;
 			bit = bit | green;
 			bit = bit << 8;
+			bit = bit | 0;
 
 			matrix->data[i][j] = bit;
 		}
@@ -220,10 +224,10 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 	{
 		for ( int j = 0; j < matrix->heigth; ++j )
 		{
-			unsigned int bit = 0;
-			unsigned int red = 204 + rand() % 255;
-			unsigned int blue = 204 + rand() % 255;
-			unsigned int green = 204 + rand() % 255;
+			size_t bit = 0;
+			size_t red = 204 + rand() % 255;
+			size_t blue = 204 + rand() % 255;
+			size_t green = 204 + rand() % 255;
 
 			bit = bit | red;
 			bit = bit << 8;
@@ -231,13 +235,14 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 			bit = bit << 8;
 			bit = bit | green;
 			bit = bit << 8;
+			bit = bit | 0;
 
 			matrix->data[i][j] = bit;
 		}
 	}
 	break;
 	}
-		
+	
 	mat* b = new mat;
 	b->wight = matrix->wight;
 	b->heigth = matrix->heigth;

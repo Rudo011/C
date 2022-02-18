@@ -244,4 +244,89 @@ mat* matrix_lcnel (mat* matrix, size_t n)
 	b->data = matrix->data;
 	
 	return b;
-} 
+}
+
+unsigned int biti_chap_1 ()
+{
+	unsigned int bit = 0;
+	unsigned int red = 51;
+	unsigned int blue = 51;
+	unsigned int green = 51;
+
+	bit = bit | red;
+	bit = bit << 8;
+	bit = bit | blue;
+	bit = bit << 8;
+	bit = bit | green;
+	bit = bit << 8;
+	
+	return bit;
+}
+
+unsigned int biti_chap_2 ()		
+{
+	unsigned int bit = 0;
+	unsigned int red = 102;
+	unsigned int blue = 102;
+	unsigned int green = 102;
+	
+	bit = bit | red;
+	bit = bit << 8;
+	bit = bit | blue;
+	bit = bit << 8;
+	bit = bit | green;
+	bit = bit << 8;
+	
+	return bit;
+}
+
+unsigned int biti_chap_3 ()	
+{
+	unsigned int bit = 0;
+	unsigned int red = 153;
+	unsigned int blue = 153;
+	unsigned int green = 153;
+		
+	bit = bit | red;
+	bit = bit << 8;
+	bit = bit | blue;
+	bit = bit << 8;
+	bit = bit | green;
+	bit = bit << 8;
+	
+	return bit;
+}
+
+unsigned int biti_chap_4 ()	
+{
+	unsigned int bit = 0;
+	unsigned int red = 204;
+	unsigned int blue = 204;
+	unsigned int green = 204;
+
+	bit = bit | red;
+	bit = bit << 8;
+	bit = bit | blue;
+	bit = bit << 8;
+	bit = bit | green;
+	bit = bit << 8;
+
+	return bit;
+}
+
+unsigned int biti_chap_5 ()
+{
+	unsigned int bit = 0;
+	unsigned int red = 255; 
+	unsigned int blue = 255;
+	unsigned int green = 255;
+
+	bit = bit | red;
+	bit = bit << 8;
+	bit = bit | blue;
+	bit = bit << 8;
+	bit = bit | green;
+	bit = bit << 8;
+	
+	return bit;
+}

@@ -102,8 +102,20 @@ int main()
 
 	std::cout << std::endl;
 
-	std::cout << biti_chap_1() << " " << biti_chap_2() << " " << biti_chap_3() << " " << biti_chap_4() << " " << biti_chap_5() << std::endl;
+	std::cout << biti_chap_1() << " " << biti_chap_2() << " " << biti_chap_3() << " " << biti_chap_4() << " " << biti_chap_5() << std::endl;de
 
+	for ( unsigned int i = 0; i < size*9; ++i )
+	{
+		for ( unsigned int j = 0; j < size; ++j )
+		{
+			if ( MASIV[i][j] < biti_chap_1() > MASIV[i][j+1] && MASIV[i][j] < biti_chap_2() > MASIV[i][j+1] && MASIV[i][j] < biti_chap_3				 () > MASIV[i][j+1] && MASIV[i][j] < biti_chap_4() > MASIV[i][j+1] && MASIV[i][j] < biti_chap_5() > MASIV[i][j+1] )
+			{
+				std::cout << "Изменение цвета в - " << i << " " << j+1 << std::endl;
+			}
+			else
+			{}
+		}
+	}
 		
 	std::cout << std::endl;		
 		

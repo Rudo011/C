@@ -330,3 +330,38 @@ unsigned int biti_chap_5 ()
 	
 	return bit;
 }
+
+void mijin_hanel (unsigned int** matrix, size_t size, int alfa)
+{
+	for ( int i = 0; i < size*9; ++i )
+	{
+		std::cout << "|";
+		for ( int j = 0; j < size; ++j )
+		{
+			unsigned int a = matrix[i][j];
+			unsigned int bit = a >> 24;
+			unsigned int bit_1 = a << 8;
+			bit_1 = bit_1 >> 24;
+			unsigned int bit_2 = a << 16;
+			bit_2 = bit_2 >> 24;
+
+			unsigned int mijin = (bit + bit_1 + bit_2) / 3;
+			
+			matrix[i][j] = mijin;
+			std::cout << matrix[i][j] << ", ";
+		}
+		std::cout << "|" << std::endl;
+	}
+
+        for ( int i = 0; i <= size*9; ++i )
+        {
+                for ( int j = 0; j <= size; ++j )
+                {
+			int n = matrix[i][j] - matrix[i][j+1];
+                        if ( n  >  alfa ) 
+                        {
+                                std::cout << "Кординаты изменения цвета: " << i << "," << j << " - " << i << "," << j+1 << std::endl;
+                        }
+                }
+        }
+}

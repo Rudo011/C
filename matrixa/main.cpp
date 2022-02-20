@@ -7,8 +7,12 @@ int main()
 	srand (time(NULL));
 	
 	size_t size = 0;
+	int alfa = 0;
 	std::cout << "Введите размер вектора -  ";
 	std::cin >> size;
+	std::cout << std::endl;
+	std::cout << "Введите отметку при которой распознается изменение цвета - ";
+	std::cin >> alfa;
 
 	vector* vec1_1 = create(size);
 	vector* vec1_2 = create(size);
@@ -101,23 +105,14 @@ int main()
 	}
 
 	std::cout << std::endl;
+	
+	mijin_hanel (MASIV, size, alfa);
 
-	std::cout << biti_chap_1() << " " << biti_chap_2() << " " << biti_chap_3() << " " << biti_chap_4() << " " << biti_chap_5() << std::endl;de
+	std::cout << std::endl;
+	
+	
+	std::cout << std::endl;
 
-	for ( unsigned int i = 0; i < size*9; ++i )
-	{
-		for ( unsigned int j = 0; j < size; ++j )
-		{
-			if ( MASIV[i][j] < biti_chap_1() > MASIV[i][j+1] && MASIV[i][j] < biti_chap_2() > MASIV[i][j+1] && MASIV[i][j] < biti_chap_3				 () > MASIV[i][j+1] && MASIV[i][j] < biti_chap_4() > MASIV[i][j+1] && MASIV[i][j] < biti_chap_5() > MASIV[i][j+1] )
-			{
-				std::cout << "Изменение цвета в - " << i << " " << j+1 << std::endl;
-			}
-			else
-			{}
-		}
-	}
-		
-	std::cout << std::endl;		
 		
 	delete_vector (vec1_1);
 	delete_vector (vec1_2);
@@ -147,6 +142,7 @@ int main()
 	delete_matrix (mult_7);
 	delete_matrix (mult_8);
 	delete_matrix (mult_9);
+	
 	
 	return 0;
 }	

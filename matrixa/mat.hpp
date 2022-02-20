@@ -22,5 +22,6 @@ unsigned int biti_chap_2 ();
 unsigned int biti_chap_3 ();
 unsigned int biti_chap_4 ();
 unsigned int biti_chap_5 ();
+void mijin_hanel (unsigned int**, size_t, int);
 
 #endif

@@ -49,7 +49,7 @@ int main()
 	vector* vec9_1 = create(size);
 	vector* vec9_2 = create(size);
 	mat* mult_9 = multi(vec9_1, vec9_2);
-
+	
 	matrix_lcnel (mult_1, 1 + rand() % 5);
 	matrix_lcnel (mult_2, 1 + rand() % 5);
 	matrix_lcnel (mult_3, 1 + rand() % 5);
@@ -76,6 +76,21 @@ int main()
 		}
 	}
 
+	unsigned int** NEW_MASIV = new unsigned int*[size*9];
+
+	for ( int i = 0; i < size*9; ++i )
+	{
+		NEW_MASIV[i] = new unsigned int[size];
+	}
+	
+	for ( int i = 0; i < size*9; ++i )
+	{
+		for ( int j = 0; j < size; ++j )
+		{
+			NEW_MASIV[i][j] = 0;
+		}
+	}
+
 	std::cout << std::endl;
 	
 	for ( int i = 0; i < size; ++i )
@@ -97,7 +112,17 @@ int main()
 
 	std::cout << std::endl;
 	
-	mijin_hanel (MASIV, size, alfa);
+	mijin_hanel (NEW_MASIV, MASIV, size, alfa);
+
+	for ( int i = 0; i < size*9; ++i )
+	{
+		std::cout << "|";
+		for ( int j = 0; j < size; ++j )
+		{
+			std::cout << NEW_MASIV[i][j] << ",";
+		}
+		std::cout << "|" << std::endl;
+	}
 
 	std::cout << std::endl;
 	
@@ -135,6 +160,7 @@ int main()
 	delete_matrix (mult_9);
 	
 	delete []MASIV;
+	delete []NEW_MASIV;
 
 	return 0;
 }	

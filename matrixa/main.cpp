@@ -94,15 +94,6 @@ int main()
 		}	
 	}
 	
-	for ( int i = 0; i < size+size*8; ++i )
-	{
-		std::cout << "|";
-		for ( int j = 0; j < size; ++j )
-		{
-			std::cout << MASIV[i][j] << ",";
-		}
-		std::cout << "|" << std::endl;
-	}
 
 	std::cout << std::endl;
 	
@@ -110,7 +101,7 @@ int main()
 
 	std::cout << std::endl;
 	
-	
+
 	std::cout << std::endl;
 
 		
@@ -143,6 +134,7 @@ int main()
 	delete_matrix (mult_8);
 	delete_matrix (mult_9);
 	
-	
+	delete []MASIV;
+
 	return 0;
 }	

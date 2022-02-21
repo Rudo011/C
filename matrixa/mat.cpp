@@ -344,18 +344,16 @@ void mijin_hanel (unsigned int** matrix, size_t size, int alfa)
 			bit_1 = bit_1 >> 24;
 			unsigned int bit_2 = a << 16;
 			bit_2 = bit_2 >> 24;
-
 			unsigned int mijin = (bit + bit_1 + bit_2) / 3;
-			
 			matrix[i][j] = mijin;
 			std::cout << matrix[i][j] << ", ";
 		}
 		std::cout << "|" << std::endl;
 	}
 
-        for ( int i = 0; i <= size*9; ++i )
+        for ( int i = 0; i < size*9; ++i )
         {
-                for ( int j = 0; j <= size; ++j )
+                for ( int j = 0; j < size-1; ++j )
                 {
 			int n = matrix[i][j] - matrix[i][j+1];
                         if ( n  >  alfa ) 
@@ -364,4 +362,18 @@ void mijin_hanel (unsigned int** matrix, size_t size, int alfa)
                         }
                 }
         }
+		
+	for ( int i = 0; i < size*9-1; ++i )
+	{
+		int j = size-1;
+		int k = 0;
+		int b = alfa-(alfa*2);
+		{
+			if ( matrix[i][j] - matrix[i+1][k] >= alfa )
+			if ( matrix[i][j] - matrix[i+1][k] <= b )
+			{
+				std::cout << "Кординаты изменения цвета: " << i << "," << size-1 << " - " << i+1 << "," << k << std::endl;
+			}
+		}
+	}
 }

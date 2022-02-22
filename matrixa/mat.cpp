@@ -37,7 +37,7 @@ void print (mat* matrix)
 
 		for ( int j = 0; j < matrix->heigth; ++j )
 		{
-			std::cout << matrix->data[i][j];
+			std::cout << matrix->data[i][j] << ",";
 		}
 
 		std::cout << "|" << std::endl;

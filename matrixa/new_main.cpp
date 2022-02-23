@@ -56,8 +56,58 @@ int main()
 	rbg_lcnel (mult_8, 1 + rand() % 9);
 	rbg_lcnel (mult_9, 1 + rand() % 9);
 	
-	
+	unsigned int** MATRIX = new unsigned int*[size*3];
 
+	for ( int i = 0; i < size*3; ++i )
+	{
+		MATRIX[i] = new unsigned int[size*3];
+	}
+	
+	for ( int i = 0; i < size*3; ++i )
+	{
+		for ( int j = 0; j < size*3; ++j )
+		{
+			MATRIX[i][j] = 0;
+		}
+	}	
+	
+	unsigned int** NEW_MATRIX = new unsigned int*[size*3];
+	
+	for ( int i = 0; i < size*3; ++i )
+	{
+		NEW_MATRIX[i] = new unsigned int[size*3];
+	}
+	
+	for ( int i = 0; i < size*3; ++i )
+	{
+		for ( int j = 0; j < size*3; ++j )
+		{
+			NEW_MATRIX[i][j] = 0;
+		}
+	}
+	
+	for ( int i = 0; i < size; ++i )
+	{
+		for ( int j = 0; j < size; ++j )
+		{
+			MATRIX[i][j] = mult_1->data[i][j];
+			MATRIX[i][j+size] = mult_2->data[i][j];
+			MATRIX[i][j+size*2] = mult_3->data[i][j];
+			MATRIX[i+size][j] = mult_4->data[i][j];
+			MATRIX[i+size][j+size] = mult_5->data[i][j];
+			MATRIX[i+size][j+size*2] = mult_6->data[i][j];
+			MATRIX[i+size*2][j] = mult_7->data[i][j];
+			MATRIX[i+size*2][j+size] = mult_8->data[i][j];
+			MATRIX[i+size*2][j+size*2] = mult_9->data[i][j];
+		}
+	}
+
+	mijin_hanelu(MATRIX, size);
+	hamematum(MATRIX, NEW_MATRIX, size);
+	print(NEW_MATRIX, size);
+	
+	std::cout << std::endl;
+	
 	delete_vector (vec1_1);
         delete_vector (vec1_2);
         delete_vector (vec2_1);
@@ -86,6 +136,9 @@ int main()
         delete_matrix (mult_7);
         delete_matrix (mult_8);
         delete_matrix (mult_9);
+
+	delete []MATRIX;
+	delete []NEW_MATRIX;
 
 	return 0;
 }

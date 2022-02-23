@@ -224,3 +224,208 @@ mat* rbg_lcnel (mat* matrix, size_t n)
 		return b;
 }
 
+void mijin_hanelu (unsigned int** matrix, size_t size)
+{
+	for ( int i = 0; i < size*3; ++i )
+	{
+		std::cout << "|";
+		for ( int j = 0; j < size*3; ++j )
+		{
+			unsigned int a = matrix[i][j];
+			unsigned int bit = a >> 24;
+			unsigned int bit_1 = a << 8;
+			bit_1 = bit_1 >> 24;
+			unsigned int bit_2 = a << 16;
+			bit_2 = bit_2 >> 24;
+			unsigned int mijin = (bit + bit_1 + bit_2) / 3;
+			matrix[i][j] = mijin;
+			std::cout << matrix[i][j] << ",";
+		}
+		std::cout << "|" << std::endl;
+	}
+}
+
+void hamematum (unsigned int** matrix, unsigned int** new_matrix, size_t size)
+{
+	unsigned int alfa = 30;
+
+	unsigned int sum_1 = 0;
+	for ( int i = 0; i < size; ++i )
+	{
+		for ( int j = 0; j < size; ++j )
+		{
+			sum_1+= matrix[i][j];
+		}
+	}
+	std::cout << sum_1 / (size*size) << std::endl;
+
+	unsigned int sum_2 = 0;
+	for ( int i = 0; i < size; ++i )
+	{
+		for ( int j = size; j < size*2; ++j )
+		{
+			sum_2+= matrix[i][j];
+		}
+	}
+	std::cout << sum_2 / (size*size) << std::endl;
+	
+	unsigned int sum_3 = 0;
+	for ( int i = 0; i < size; ++i )
+	{
+		for ( int j = size*2; j < size*3; ++j )
+		{
+			sum_3+= matrix[i][j];
+		}
+	}
+	std::cout << sum_3 / (size*size) << std::endl;
+
+	unsigned int sum_4 = 0;
+	for ( int i = size; i < size*2; ++i )
+	{
+		for ( int j = 0; j < size; ++j )
+		{
+			sum_4+= matrix[i][j];
+		}
+	}
+	std::cout << sum_4 / (size*size) << std::endl;
+
+	unsigned int sum_5 = 0;
+	for ( int i = size; i < size*2; ++i )
+	{
+		for ( int j = size; j < size*2; ++j )
+		{
+			sum_5+= matrix[i][j];
+		}
+	}
+	std::cout << sum_5 / (size*size) << std::endl;
+
+	unsigned int sum_6 = 0;
+	for ( int i = size; i < size*2; ++i )
+	{
+		for ( int j = size*2; j < size*3; ++j )
+		{
+			sum_6+= matrix[i][j];
+		}
+	}
+	std::cout << sum_6 / (size*size) << std::endl;
+
+	unsigned int sum_7 = 0;
+	for ( int i = size*2; i < size*3; ++i )
+	{
+		for ( int j = 0; j < size; ++j )
+		{
+			sum_7+= matrix[i][j];
+		}
+	}
+	std::cout << sum_7 / (size*size) << std::endl;
+
+	unsigned int sum_8 = 0;
+	for ( int i = size*2; i < size*3; ++i )
+	{
+		for ( int j = size; j < size*2; ++j )
+		{
+			sum_8+= matrix[i][j];
+		}
+	}
+	std::cout << sum_8 / (size*size) << std::endl;
+
+	unsigned int sum_9 = 0;
+	for ( int i = size*2; i < size*3; ++i )
+	{
+		for ( int j = size*2; j < size*3; ++j )
+		{
+			sum_9+= matrix[i][j];
+		}
+	}
+	std::cout << sum_9 / (size*size) << std::endl;
+
+	for ( int i = 0; i < size; ++i )
+	{
+		if ( sum_1 - sum_2 > alfa && sum_1 - sum_2 < alfa - (alfa*alfa) )
+		{
+			new_matrix[i][size] = 1;
+		}
+		if ( sum_2 - sum_3 > alfa && sum_2 - sum_3 < alfa - (alfa*alfa) )
+		{
+			new_matrix[i][size*2] = 1;
+		}
+		if ( sum_3 - sum_4 > alfa && sum_3 - sum_4 < alfa - (alfa*alfa) )
+		{
+			new_matrix[i][size*3-1] = 1;
+		}
+	}
+
+	for ( int j = 0; j < size; ++j )
+	{
+		if ( sum_1 - sum_4 > alfa && sum_1 - sum_4 < alfa - (alfa*alfa) )
+		{
+	 		new_matrix[size][j] = 1;
+		}
+		if ( sum_4 - sum_7 > alfa && sum_4 - sum_7 < alfa - (alfa*alfa) )
+		{
+			new_matrix[size*2][j] = 1;
+		}
+	}
+
+	for ( int i = size; i < size*2; ++i )
+	{
+		if ( sum_4 - sum_5 > alfa && sum_4 - sum_5 < alfa - (alfa*alfa) )
+		{
+			new_matrix[i][size] = 1;
+		}
+		if ( sum_5 - sum_6 > alfa && sum_5 - sum_6 < alfa - (alfa*alfa) )
+		{
+			new_matrix[i][size*2] = 1;
+		}
+		if (sum_6 - sum_7 > alfa && sum_6 - sum_7 < alfa - (alfa*alfa) )
+		{
+			new_matrix[i][size*3-1] = 1;
+		}
+	}
+	for ( int i = size*2; i < size*3; ++i )
+	{
+		if ( sum_7 - sum_8 > alfa && sum_7 - sum_8 < alfa - (alfa*alfa) )
+		{
+			new_matrix[i][size] = 1;
+		}
+		if ( sum_8 - sum_9 > alfa && sum_8 - sum_9 < alfa - (alfa*alfa) )
+		{
+			new_matrix[i][size*2] = 1;
+		}
+	}
+	for ( int j = size; j < size*2; ++j )
+	{
+		if ( sum_2 - sum_5 > alfa && sum_2 - sum_5 < alfa - (alfa*alfa) )
+		{
+			new_matrix[size][j] = 1;
+		}
+		if ( sum_5 - sum_8 > alfa && sum_5 - sum_8 < alfa - (alfa*alfa) )
+		{
+			new_matrix[size*2][j] = 1;
+		}
+	}
+	for ( int j = size*2; j < size*3; ++j )
+	{
+		if ( sum_3 - sum_6 > alfa && sum_3 - sum_6 < alfa - (alfa*alfa) )
+		{ 
+			new_matrix[size][j] = 1;
+		}
+		if ( sum_6 - sum_9 > alfa && sum_6 - sum_9 < alfa - (alfa*alfa) )
+		{
+			new_matrix[size*2][j] = 1;
+		}
+	}
+}
+
+void print(unsigned int** matrix, size_t size)
+{
+	for ( int i = 0; i < size*3; ++i )
+	{
+		std::cout << "|";
+		for ( int j = 0; j < size*3; ++j )
+		{
+			std::cout << matrix[i][j] << ",";
+		}
+		std::cout << "|" << std::endl;
+	}
+}

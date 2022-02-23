@@ -19,5 +19,8 @@ mat* multi (vector*, vector*);
 mat* matrix_lcnel (mat*, size_t);
 void mijin_hanel (unsigned int**, unsigned int**, size_t, int);
 mat* rbg_lcnel (mat*, size_t);
+void mijin_hanelu (unsigned int**, size_t);
+void print(unsigned int**, size_t);
+void hamematum(unsigned int**, unsigned int**, size_t);
 
 #endif

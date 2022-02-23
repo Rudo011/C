@@ -22,5 +22,6 @@ mat* rbg_lcnel (mat*, size_t);
 void mijin_hanelu (unsigned int**, size_t);
 void print(unsigned int**, size_t);
 void hamematum(unsigned int**, unsigned int**, size_t);
+void taza_hamematutyun(unsigned int**, unsigned int**, size_t);
 
 #endif

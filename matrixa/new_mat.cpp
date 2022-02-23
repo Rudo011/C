@@ -15,9 +15,9 @@ mat* rbg_lcnel (mat* matrix, size_t n)
                         for ( int j = 0; j < matrix->heigth; ++j )
                         {
                                 unsigned int bit = 0;
-                                unsigned int red = 230 + rand() % 255;
-                                unsigned int blue = 70 + rand() % 110;
-                                unsigned int green = 70 + rand() % 110;
+                                unsigned int red = 230 + rand() % 15;
+                                unsigned int blue = 230 + rand() % 15;
+                                unsigned int green = 230 + rand() % 15;
 
                                 bit = bit | red;
                                 bit = bit << 8;
@@ -38,9 +38,9 @@ mat* rbg_lcnel (mat* matrix, size_t n)
 			for ( int j = 0; j < matrix->heigth; ++j )
 			{
 				unsigned int bit = 0;
-				unsigned int red = 84 + rand() % 124;
-				unsigned int blue = 84 + rand() % 124;
-				unsigned int green = 84 + rand() % 124;
+				unsigned int red = 64 + rand() % 15;
+				unsigned int blue = 64 + rand() % 15;
+				unsigned int green = 64 + rand() % 15;
 
 				bit = bit | red;
 				bit = bit << 8;
@@ -61,9 +61,9 @@ mat* rbg_lcnel (mat* matrix, size_t n)
 			for ( int j = 0; j < matrix->heigth; ++j )
 			{
 				unsigned int bit = 0;
-				unsigned int red = 10 + rand() % 50;
-				unsigned int blue = 10 + rand() % 50;
-				unsigned int green = 10 + rand() % 30;
+				unsigned int red = 50 + rand() % 15;
+				unsigned int blue = 50 + rand() % 15;
+				unsigned int green = 50 + rand() % 15;
 			
 				bit = bit | red;	
 				bit = bit << 8;
@@ -84,9 +84,9 @@ mat* rbg_lcnel (mat* matrix, size_t n)
 			for ( int j = 0; j < matrix->heigth; ++j )
 			{
 				unsigned int bit = 0;
-				unsigned int red = 60 + rand() % 80;
-				unsigned int blue = 50 + rand() % 60;
-				unsigned int green = 40 + rand() % 50;
+				unsigned int red = 70 + rand() % 15;
+				unsigned int blue = 70 + rand() % 15;
+				unsigned int green = 70 + rand() % 15;
 	
 				bit = bit | red;
 				bit = bit << 8;
@@ -107,9 +107,9 @@ mat* rbg_lcnel (mat* matrix, size_t n)
 			for ( int j = 0; j < matrix->heigth; ++j )
 			{
 				unsigned int bit = 0;
-				unsigned int red = 80 + rand() % 100;
-				unsigned int blue = 100 + rand() % 110;
-				unsigned int green = 90 + rand() % 100; 
+				unsigned int red = 90 + rand() % 15;
+				unsigned int blue = 90 + rand() % 15;
+				unsigned int green = 90 + rand() % 15; 
 		
 				bit = bit | red;
 				bit = bit << 8;
@@ -130,9 +130,9 @@ mat* rbg_lcnel (mat* matrix, size_t n)
 			for ( int j = 0; j < matrix->heigth; ++j )
 			{
 				unsigned int bit = 0;
-				unsigned int red = 100 + rand() % 120;
-				unsigned int blue = 120 + rand() % 130;
-				unsigned int green = 130 + rand() % 135;
+				unsigned int red = 100 + rand() % 15;
+				unsigned int blue = 100 + rand() % 15;
+				unsigned int green = 100 + rand() % 15;
 		
 				bit = bit | red;
 				bit = bit << 8;
@@ -153,9 +153,9 @@ mat* rbg_lcnel (mat* matrix, size_t n)
 			for ( int j = 0; j < matrix->heigth; ++j )
 			{
 				unsigned int bit = 0;
-				unsigned int red = 15 + rand() % 20;
-				unsigned int blue = 25 + rand() % 36;
-				unsigned int green = 24 + rand() % 30;
+				unsigned int red = 15 + rand() % 15;
+				unsigned int blue = 15 + rand() % 15;
+				unsigned int green = 15 + rand() % 15;
 			
 				bit = bit | red;
 				bit = bit << 8;
@@ -176,9 +176,9 @@ mat* rbg_lcnel (mat* matrix, size_t n)
 			for ( int j = 0; j < matrix->heigth; ++j )
 			{
 				unsigned int bit = 0;
-				unsigned int red = 200 + rand() % 220;
-				unsigned int blue = 170 + rand() % 180;
-				unsigned int green = 180 + rand() % 200;
+				unsigned int red = 200 + rand() % 15;
+				unsigned int blue = 200 + rand() % 15;
+				unsigned int green = 200 + rand() % 15;
 			
 				bit = bit | red;
 				bit = bit << 8;
@@ -199,9 +199,9 @@ mat* rbg_lcnel (mat* matrix, size_t n)
 			for ( int j = 0; j < matrix->heigth; ++j )
 			{
 				unsigned int bit = 0;
-				unsigned int red = 160 + rand() % 169;
-				unsigned int blue = 24 + rand() % 30;
-				unsigned int green = 45 + rand() % 60;
+				unsigned int red = 160 + rand() % 15;
+				unsigned int blue = 160 + rand() % 15;
+				unsigned int green = 160 + rand() % 15;
 			
 				bit = bit | red;
 				bit = bit << 8;
@@ -427,5 +427,25 @@ void print(unsigned int** matrix, size_t size)
 			std::cout << matrix[i][j] << ",";
 		}
 		std::cout << "|" << std::endl;
+	}
+}
+
+void taza_hamematutyun (unsigned int** matrix, unsigned int** new_matrix, size_t size)
+{
+	unsigned int epsilon = 20;
+
+	for ( int i = 0; i < size*3-1; ++i )
+	{
+		for ( int j = 0; j < size*3-1; ++j )
+		{
+			if (matrix[i][j] - matrix[i][j+1] > epsilon && matrix[i][j] - matrix[i][j+1] < epsilon - (epsilon*2))  
+			{
+				new_matrix[i][j] = 1;
+			}
+			if (matrix[i][j] - matrix[i+1][j] > epsilon && matrix[i][j] - matrix[i+1][j] < epsilon - (epsilon*2))
+			{
+				new_matrix[i][j] = 1;
+			}
+		}
 	}
 }

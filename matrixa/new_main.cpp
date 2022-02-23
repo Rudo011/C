@@ -103,7 +103,7 @@ int main()
 	}
 
 	mijin_hanelu(MATRIX, size);
-	hamematum(MATRIX, NEW_MATRIX, size);
+	taza_hamematutyun(MATRIX, NEW_MATRIX, size);
 	print(NEW_MATRIX, size);
 	
 	std::cout << std::endl;

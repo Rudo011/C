@@ -449,3 +449,44 @@ void taza_hamematutyun (unsigned int** matrix, unsigned int** new_matrix, size_t
 		}
 	}
 }
+
+void new_hamematum ( unsigned int** matrix, unsigned int** new_matrix, size_t size)
+{
+	unsigned int epsilon = 20;
+
+	for ( int i = 0; i < size*3; ++i )
+	{
+		for ( int j = 0; j < size*3; ++j )
+		{
+			unsigned int red = 0;
+			unsigned int blue = 0;
+			unsigned int green = 0;
+			unsigned int red_1 = 0;
+			unsigned int blue_1 = 0;
+			unsigned int green_1 = 0;
+
+			red = matrix[i][j] >> 24;
+			blue = matrix[i][j] << 8;
+			blue = blue >> 24;
+			green = matrix[i][j] << 16;
+			green = green >> 24;
+
+			red_1 = matrix[i][j+1] >> 24;
+			blue_1 = matrix[i][j+1] << 8;
+			blue_1 = blue_1 >> 24;
+			green_1 = matrix[i][j+1] << 16;
+			green_1 = green_1 >> 24;
+
+			if ( red - red_1 > epsilon && blue - blue_1 > epsilon && green - green_1 > epsilon)
+			{
+				new_matrix[i][j] = 1;
+			}
+		}
+	}
+}
+
+
+			
+
+				
+			

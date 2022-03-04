@@ -15,7 +15,7 @@ mat* create (size_t, size_t);
 void print (mat*);
 mat* sum (mat*, mat*);
 void delete_matrix (mat*);
-mat* multi (vector*, vector*);
+mat* multi (vector &, vector &);
 mat* matrix_lcnel (mat*, size_t);
 void mijin_hanel (unsigned int**, unsigned int**, size_t, int);
 mat* rbg_lcnel (mat*, size_t);

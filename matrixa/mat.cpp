@@ -67,60 +67,45 @@ void delete_matrix (mat* matrix)
 	delete matrix;
 }
 
-vector* create (size_t size)
+vector::vector(size_t s)
+	: m_size(s)
+	, m_data(0)
 {
-	int* data = new int[size];
-
-	for ( int i = 0; i < size; ++i )
+	m_data = new int[m_size];
+	for ( int i = 0; i < m_size; ++i )
 	{
-		data[i] = rand() % 2;
+		m_data[i] = rand() % 2;
 	}
-
-	vector* m = new vector;
-	m->size = size;
-	m->data = data;
-
-	return m;
 }
 
-void print(vector* m)
+vector::~vector()
 {
-	for (int i = 0; i < m->size; ++i )
-	{
-		std::cout << "| " << m->data[i] << " |";
-	}
-	std::cout << std::endl;
+	delete [] m_data;
 }
 
-mat* multi (vector* m, vector* n)
+mat* multi (vector & m, vector & n)
 {
-	unsigned int** data = new unsigned int*[m->size];	
+	unsigned int** data = new unsigned int*[m.m_size];	
 	
-	for ( int i = 0; i < m->size; ++i )
+	for ( int i = 0; i < m.m_size; ++i )
 	{
-		data[i] = new unsigned int[n->size];
+		data[i] = new unsigned int[n.m_size];
 	}
 
-	for ( int i = 0; i < m->size; ++i )
+	for ( int i = 0; i < m.m_size; ++i )
 	{
-		for ( int j = 0; j < n->size; ++j )
+		for ( int j = 0; j < n.m_size; ++j )
 		{
-			data[i][j] = m->data[i] * n->data[j];
+			data[i][j] = m.m_data[i] * n.m_data[j];
 		}
 	}
 	
 	mat* A = new mat;
-	A->wight = m->size;
-	A->heigth = n->size;
+	A->wight = m.m_size;
+	A->heigth = n.m_size;
 	A->data = data;
 
 	return A;
-}
-
-void delete_vector (vector* vec)
-{
-	delete vec->data;
-	delete vec;
 }
 
 mat* matrix_lcnel (mat* matrix, size_t n)

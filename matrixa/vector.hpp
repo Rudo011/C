@@ -5,8 +5,11 @@
 
 struct vector
 {
-	size_t size;
-	int* data;
+	vector(size_t s);
+	~vector();
+
+	size_t m_size;
+	int* m_data;
 };
 
 vector* create (size_t);

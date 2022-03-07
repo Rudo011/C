@@ -20,10 +20,10 @@ vector::~vector()
 	delete [] m_data;
 }
 
-//vector::print)
-//{
-//	for (int i = 0; i < m_size; ++i)
-///	{
-//		std::cout << "|" << m_data[i] << "|";
-//	}
-//}
+void vector::print()
+{
+	for (int i = 0; i < m_size; ++i)
+	{
+		std::cout << "|" << m_data[i] << "|";
+	}
+}

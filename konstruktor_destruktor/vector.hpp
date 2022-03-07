@@ -7,9 +7,8 @@ class vector
 {
 	public:
 		vector(size_t s);
+		void print();
 		~vector();
-
-	private:
 		size_t m_size;
 		int* m_data;
 };

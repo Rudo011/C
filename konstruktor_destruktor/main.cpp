@@ -1,18 +1,18 @@
 #include <iostream>
 #include "vector.hpp"
 #include "matrix.hpp"
-#include <list>
+#include <vector>
 
 int main()
 {
 	srand (time(NULL));
 	size_t size = 0;
-	int alfa = 0;
+	int epsilon = 0;
 	std::cout << "Введите размер вектора: ";
 	std::cin >> size;
 	std::cout << std::endl;
 	std::cout << "Введите отметку при которой распознается изменение цвета: ";
-	std::cin >> alfa;
+	std::cin >> epsilon;
 
 	vector vec1_1(size);
 	vector vec1_2(size);
@@ -49,22 +49,31 @@ int main()
 	vector vec9_1(size);
 	vector vec9_2(size);
 	matrix mat_9(vec9_1, vec9_2);
-
-	mat_1.rbg_lcnel(1 + rand() % 9);
-	mat_2.rbg_lcnel(1 + rand() % 9);
-	mat_3.rbg_lcnel(1 + rand() % 9);
-	mat_4.rbg_lcnel(1 + rand() % 9);
-	mat_5.rbg_lcnel(1 + rand() % 9);
-	mat_6.rbg_lcnel(1 + rand() % 9);
-	mat_7.rbg_lcnel(1 + rand() % 9);
-	mat_8.rbg_lcnel(1 + rand() % 9);
-	mat_9.rbg_lcnel(1 + rand() % 9);
 	
-	std::list <unsigned int**> matrix_list = {mat_1.m_data, mat_2.m_data, mat_3.m_data, mat_4.m_data, mat_5.m_data, 						      	 mat_6.m_data, mat_7.m_data, mat_8.m_data, mat_9.m_data};
+	mat_1.rgb_lcnel(1 + rand() % 9);
+	mat_2.rgb_lcnel(1 + rand() % 9);
+	mat_3.rgb_lcnel(1 + rand() % 9);
+	mat_4.rgb_lcnel(1 + rand() % 9);
+	mat_5.rgb_lcnel(1 + rand() % 9);
+	mat_6.rgb_lcnel(1 + rand() % 9);
+	mat_7.rgb_lcnel(1 + rand() % 9);
+	mat_8.rgb_lcnel(1 + rand() % 9);
+	mat_9.rgb_lcnel(1 + rand() % 9);
+	
+	std::vector <matrix*> matrix_vector = {&mat_1, &mat_2, &mat_3, &mat_4, &mat_5, &mat_6, &mat_7, &mat_8, &mat_9};
+	
+	size_t size_for_big_matrix = size*3;
+	matrix MATRIX(size_for_big_matrix);
+	matrix NEW_MATRIX(size_for_big_matrix);
 
-	matrix MATRIX(size*9);
+	MATRIX.merge(matrix_vector, size);
+	MATRIX.average_rgb();
+	MATRIX.print();
+	MATRIX.compare(NEW_MATRIX, epsilon);
+	
+	NEW_MATRIX.print();
 
-	MATRIX.BIG_MATRIX(mat_1.m_data, mat_2.m_data, mat_3.m_data, mat_4.m_data, mat_5.m_data, 						      	 mat_6.m_data, mat_7.m_data, mat_8.m_data, mat_9.m_data, MATRIX.m_data);
+	
 
 
 	return 0;

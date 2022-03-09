@@ -45,9 +45,10 @@ void matrix::print()
 		}
 		std::cout << "|" << std::endl;
 	}
+	std::cout << std::endl;
 }
 
-void matrix::rbg_lcnel(size_t n)
+void matrix::rgb_lcnel(size_t n)
 {
 	switch(n)
 	{
@@ -72,6 +73,7 @@ void matrix::rbg_lcnel(size_t n)
 				m_data[i][j] = bit;
 			}
 		}
+		break;
 
 		case 2:
 
@@ -94,6 +96,7 @@ void matrix::rbg_lcnel(size_t n)
 				m_data[i][j] = bit;
 			}
 		}
+		break;
 		
 		case 3:
 		
@@ -116,6 +119,7 @@ void matrix::rbg_lcnel(size_t n)
 				m_data[i][j] = bit;
 			}
 		}
+		break;
 	
 		case 4:
 		
@@ -138,6 +142,7 @@ void matrix::rbg_lcnel(size_t n)
 				m_data[i][j] = bit;
 			}
 		}
+		break;
 
 		case 5:
 		
@@ -160,6 +165,7 @@ void matrix::rbg_lcnel(size_t n)
 				m_data[i][j] = bit;
 			}
 		}
+		break;
 	
 		case 6:
 		
@@ -182,6 +188,7 @@ void matrix::rbg_lcnel(size_t n)
 				m_data[i][j] = bit;
 			}
 		}
+		break;
 
 		case 7:
 	
@@ -204,6 +211,7 @@ void matrix::rbg_lcnel(size_t n)
 				m_data[i][j] = bit;
 			}
 		}
+		break;
 
 		case 8:
 
@@ -226,6 +234,7 @@ void matrix::rbg_lcnel(size_t n)
 				m_data[i][j] = bit;
 			}
 		}
+		break;
 		
 		case 9:
 		
@@ -248,6 +257,7 @@ void matrix::rbg_lcnel(size_t n)
 				m_data[i][j] = bit;
 			}
 		}
+		break;
 	}
 }
 	
@@ -261,25 +271,68 @@ matrix::matrix(size_t s)
 	{
 		m_data[i] = new unsigned int[m_heigth];
 	}
-}
-
-void matrix::BIG_MATRIX(unsigned int** a, unsigned int** b, unsigned int** c, unsigned int** d, unsigned int** e, 				       unsigned int** f, unsigned int** g, unsigned int** h, unsigned int** i, unsigned int** MATRIX)
-{
+	
 	for ( int i = 0; i < m_wight; ++i )
 	{
-		for ( int j = 0; j < m_heigth; ++i )
+		for ( int j = 0; j < m_heigth; ++j )
 		{
-			MATRIX[i][j] = a.m_data[i][j];
-			MATRIX[i][j+m_heigth] = b.m_data[i][j];
-			MATRIX[i][j+m_heigth*2] = c.m_data[i][j];
-			MATRIX[i+m_wight][j] = d.m_data[i][j];
-			MATRIX[i+m_wight][j+m_heigth] = e.m_data[i][j];
-			MATRIX[i+m_wight][j+m_heigth*2] = f.m_data[i][j];
-			MATRIX[i+m_wight*2][j] = g.m_data[i][j];
-			MATRIX[i+m_wight*2][j+m_heigth] = h.m_data[i][j];
-			MATRIX[i+m_wight*2][j+m_heigth*2] = i.m_data[i][j];
+			m_data[i][j] = 0;
+		}	
+	}
+}
+
+void matrix::merge(const std::vector <matrix*>& v, size_t s)
+{
+	for ( int i = 0; i < s; ++i )
+	{
+		for ( int j = 0; j < s; ++j )
+		{
+			m_data[i][j] = v[0]->m_data[i][j];
+			m_data[i][j+s] = v[1]->m_data[i][j];
+			m_data[i][j+s*2] = v[2]->m_data[i][j];
+			m_data[i+s][j] = v[3]->m_data[i][j];
+			m_data[i+s][j+s] = v[4]->m_data[i][j];
+			m_data[i+s][j+s*2] = v[5]->m_data[i][j];
+			m_data[i+s*2][j] = v[6]->m_data[i][j];
+			m_data[i+s*2][j+s] = v[7]->m_data[i][j];
+			m_data[i+s*2][j+s*2] = v[8]->m_data[i][j];
 		}
 	}
 }
 
+void matrix::average_rgb()
+{
+	for ( int i = 0; i < m_wight; ++i )
+	{
+		for ( int j = 0; j < m_heigth; ++j )
+		{
+			unsigned int a = m_data[i][j];
+			unsigned int bit = a >> 24;
+			unsigned int bit_1 = a << 8;
+			bit_1 = bit_1 >> 24;
+			unsigned int bit_2 = a << 16;
+			bit_2 = bit_2 >> 24;
+			unsigned int average = (bit + bit_1 + bit_2) / 3;
+			m_data[i][j] = average;
+		}
+	}
+}
 
+void matrix::compare(matrix & matrix, int epsilon)
+{
+	int m_epsilon = epsilon - epsilon - epsilon;
+	for ( int i = 0; i < m_wight-1; ++i )
+	{
+		for ( int j = 0; j < m_heigth; ++j )
+		{
+			if ( m_data[i][j] - m_data[i][j+1] > epsilon && m_data[i][j] - m_data[i][j+1] < m_epsilon)
+			{
+				matrix.m_data[i][j] = 1;
+			}
+			if ( m_data[i][j] - m_data[i+1][j] > epsilon && m_data[i][j] - m_data[i+1][j] < m_epsilon)
+			{
+				matrix.m_data[i][j] = 1;
+			}
+		}
+	}
+}

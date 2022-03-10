@@ -32,18 +32,19 @@ int main()
 	{
 		vector vec_1(size);
 		vector vec_2(size);
-		matrix *p = new matrix(vec_1, vec_2);
-		p->rgb_lcnel(1 + rand() % 9);
-		mat_vector.push_back(p);
+		new matrix* mat(vec_1, vec_2);
+		mat.rgb_lcnel(1 + rand() % 9);
+		mat_vector.push_back(&mat);
 	}
-
 	
+		
+	
+		
 	size_t size_for_big_matrix = size*sqrt(amount);
 	matrix MATRIX(size_for_big_matrix);
 	matrix NEW_MATRIX(size_for_big_matrix);
 
 	MATRIX.merge(mat_vector, amount);
-	MATRIX.print();
 	MATRIX.average_rgb();
 	MATRIX.compare(NEW_MATRIX, epsilon);
 	

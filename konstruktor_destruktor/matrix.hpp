@@ -15,6 +15,7 @@ class matrix
 		void average_rgb();
 		void compare(matrix &, int);
 		void merge(const std::vector <matrix*> &, size_t);
+
 		size_t m_wight;
 		size_t m_heigth;
 		unsigned int** m_data;

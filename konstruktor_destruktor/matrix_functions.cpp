@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <cstdlib>
 #include <ctime>
 #include <list>
@@ -281,21 +282,19 @@ matrix::matrix(size_t s)
 	}
 }
 
-void matrix::merge(const std::vector <matrix*>& v, size_t s)
+void matrix::merge(const std::vector <matrix*>& v, size_t size)
 {
-	for ( int i = 0; i < s; ++i )
+	for ( int k = 0; k < size; ++k)	
 	{
-		for ( int j = 0; j < s; ++j )
+		for ( int l = 0; l < m_wight - v[0]->m_wight; l+=sqrt(size) )
 		{
-			m_data[i][j] = v[0]->m_data[i][j];
-			m_data[i][j+s] = v[1]->m_data[i][j];
-			m_data[i][j+s*2] = v[2]->m_data[i][j];
-			m_data[i+s][j] = v[3]->m_data[i][j];
-			m_data[i+s][j+s] = v[4]->m_data[i][j];
-			m_data[i+s][j+s*2] = v[5]->m_data[i][j];
-			m_data[i+s*2][j] = v[6]->m_data[i][j];
-			m_data[i+s*2][j+s] = v[7]->m_data[i][j];
-			m_data[i+s*2][j+s*2] = v[8]->m_data[i][j];
+			for ( int i = 0; i < v[0]->m_wight; ++i )
+			{
+				for ( int j = 0; j < v[0]->m_heigth; ++j )
+				{	
+					m_data[i+l][j] = v[k]->m_data[i][j];
+				}
+			}
 		}
 	}
 }

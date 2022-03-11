@@ -22,7 +22,7 @@ int main()
 	if (sqrt(amount) - (int)sqrt(amount) != 0)
 	{
 		std::cout << "Количесто матриц не коректна." << std::endl;;
-		std::cout << "Попробуйте еще раз." << std::endl;
+		std::cout << "Попробуйте еще раз (введите число с чистым корнем)." << std::endl;
 		exit(0);
 	}
 
@@ -36,20 +36,16 @@ int main()
 		p->rgb_lcnel(1 + rand() % 9);
 		mat_vector.push_back(p);
 	}
-
 	
 	size_t size_for_big_matrix = size*sqrt(amount);
 	matrix MATRIX(size_for_big_matrix);
 	matrix NEW_MATRIX(size_for_big_matrix);
 
 	MATRIX.merge(mat_vector, amount);
-	MATRIX.print();
 	MATRIX.average_rgb();
+	MATRIX.print();
 	MATRIX.compare(NEW_MATRIX, epsilon);
-	
-
-	
-
+	NEW_MATRIX.print();
 
 	return 0;
 }

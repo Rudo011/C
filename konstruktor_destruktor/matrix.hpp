@@ -1,8 +1,8 @@
-#include <cstdlib>
-#include <vector>
-
 #ifndef MATRIX_HPP
 #define MATRIX_HPP
+
+#include <cstdlib>
+#include <vector>
 
 class matrix
 {

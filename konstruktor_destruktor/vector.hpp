@@ -1,7 +1,7 @@
-#include <cstdlib>
-
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
+
+#include <cstdlib>
 
 class vector
 {

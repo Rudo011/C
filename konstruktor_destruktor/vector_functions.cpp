@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+
 #include "vector.hpp"
 
 vector::vector(size_t s)

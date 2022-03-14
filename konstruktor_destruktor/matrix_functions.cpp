@@ -282,18 +282,19 @@ matrix::matrix(size_t s)
 	}
 }
 
-void matrix::merge(const std::vector <matrix*>& v, size_t size)
+void matrix::merge(const std::vector <matrix*>& v)
 {
-	int k = 0;
+	int k = (m_heigth / v[0]->m_wight)*(m_heigth / v[0]->m_wight);
+	int g = 0;
 	for ( int m = 0; m < m_heigth; m+=v[0]->m_heigth )
 	{	
-		for ( int l = 0; l < m_wight && k < size; l+=v[0]->m_wight, k++ )	
+		for ( int l = 0; l < m_wight && g < k; l+=v[0]->m_wight, g++ )	
 		{
 			for ( int i = 0; i < v[0]->m_wight; ++i )
 			{
 				for ( int j = 0; j < v[0]->m_heigth; ++j )
 				{
-					m_data[i+m][j+l] = v[k]->m_data[i][j];
+					m_data[i+m][j+l] = v[g]->m_data[i][j];
 				}
 			}
 		}

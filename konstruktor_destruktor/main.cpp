@@ -37,7 +37,7 @@ int main()
 	size_t size_for_big_matrix = size*sqrt(amount);
 	matrix MATRIX(size_for_big_matrix);
 	matrix NEW_MATRIX(size_for_big_matrix);
-	MATRIX.merge(mat_vector, amount);
+	MATRIX.merge(mat_vector);
 	MATRIX.average_rgb();
 	MATRIX.print();
 	MATRIX.compare(NEW_MATRIX, epsilon);

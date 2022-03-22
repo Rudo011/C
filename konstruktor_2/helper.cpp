@@ -42,14 +42,3 @@ void test (int argc, char** argv)
             exit(0);
         }
 }
-
-void del (const std::vector<matrix*> & p)
-{
-	std::vector<matrix*>::const_iterator k;
-
-	for ( k = p.begin(); k < p.end(); k++ )
-	{
-		delete *k;
-	}
-}
-

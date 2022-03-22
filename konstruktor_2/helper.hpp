@@ -8,6 +8,6 @@
 
 
 void test(int, char**);
-void del(const std::vector<matrix*> &);
+void del(const std::vector<matrix> &);
 
 #endif

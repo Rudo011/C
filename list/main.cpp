@@ -5,22 +5,28 @@
 
 int main ()
 {
-	list list;
-
-	list.push_back(1);
-	list.push_back(2);
-	list.push_back(3);
-	list.push_front(34);
-
-	list.print();
-
-	list.remove(3);
-
-	list.print();
+	list list_1;
+	list list_2;
 	
-	list.reverse();
+	list_1.push_back(5);
+	list_1.push_back(10);
+	list_1.push_back(0);
+	list_1.push_back(213);
+	list_2.push_back(1);
+	list_2.push_back(1);
+	list_2.push_back(1);
+	list_2.push_back(1);
+	list_2.push_back(1);
+
 	
-	list.print();
+
+	list_1.print();
+
+	list_1.splice(10, list_2);
+
+	list_1.print();
+	
+	
 
 	return 0;
 }

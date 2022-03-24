@@ -1,4 +1,4 @@
-ifndef NODE_HPP
+#ifndef NODE_HPP
 #define NODE_HPP
 
 class node
@@ -6,6 +6,7 @@ class node
 	public:
 		int m_data;
 		node* m_next;
+		node* m_prev;
 		node();
 		node(int);
 };

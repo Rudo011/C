@@ -16,6 +16,16 @@ class list
 		void reverse();
 		void splice (int, list);
 		void print();
+		void front();
+		void back();
+		void pop_front();
+		void pop_back();
+		void insert(int, int);
+		void size();
+		void find(int);
+		void swap_node(node*, node*);
+		void swap(int, int);
+		void sort();
 		bool empty();
 		
 };

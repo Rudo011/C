@@ -7,7 +7,7 @@ node::node()
 	m_prev = 0;
 }
 
-node::node(int m_data)
+node::node (int m_data)
 {
 	this->m_data = m_data;
 	this->m_next = 0;

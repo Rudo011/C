@@ -10,14 +10,26 @@ list::list()
 {
 }
 
-void list::front()
+list::~list()
 {
-	std::cout << "First element - " << m_top << std::endl;
+	node* current = this->m_top;
+	
+	while(current != 0)
+	{
+		node* next = current->m_next;
+		delete current;
+		current = next;
+	}
 }
 
-void list::back()
+node* list::front()
 {
-	std::cout << "Last element - " << m_end << std::endl;
+	return m_top;
+}
+
+node* list::back()
+{
+	return m_end;
 }
 
 void list::pop_front()
@@ -48,7 +60,7 @@ void list::pop_back()
 	m_end = prev;
 }
 
-void list::insert(int k, int m_data)
+void list::insert(node* k, int m_data)
 {
 	node* tmp = new node(m_data);
 	if (empty())
@@ -58,20 +70,14 @@ void list::insert(int k, int m_data)
 		return;
 	}
 
-	node* current = m_top;
-	node* next = 0;
-
-	while (current && current->m_data != k )
+	if(k != 0)
 	{
-		next = current->m_next;
-		current = current->m_next;
+		tmp->m_next = k->m_next;
+		k->m_next = tmp;
 	}
-	if(current)
+	else 
 	{
-		assert(current->m_data == k);
-		next = current->m_next;
-		current->m_next = tmp;
-		tmp->m_next = next;
+		std::cout << "Element didn't find" << std::endl;
 	}
 }
 		
@@ -87,35 +93,19 @@ int list::size()
 	}
 	return count;
 }
-
-void list::swap(int a, int b)
-{
-	node* current = m_top;
-	node* current_1 = m_top;
 	
-	while (current->m_data != a)
-	{
-		current = current->m_next;
-	}
-	while (current_1->m_data != b)
-	{
-		current_1 = current_1->m_next;
-	}
-	if (current && current_1)
-	{
-		assert(current->m_data == a);
-		assert(current_1->m_data == b);
-			
-		current->m_data = b;
-		current_1->m_data = a;
-	}
-}
-	
-void list::swap_node(node* a, node* b)
+void list::swap(node* a, node* b)
 {
+	if(a && b)
+	{
 		int temp = a->m_data;
 		a->m_data = b->m_data;
 		b->m_data = temp;
+	}
+	else 
+	{
+		std::cout << "Elements didn't find" << std::endl;
+	}
 }
 
 void list::sort()
@@ -135,7 +125,7 @@ void list::sort()
 		{
 			if ( current->m_data > current->m_next->m_data)
 			{
-				swap_node(current, current->m_next);
+				swap(current, current->m_next);
 				status = true;
 			}
 			current = current->m_next;
@@ -144,14 +134,14 @@ void list::sort()
 	while(status);
 }
 
-void list::find(int k)
+node* list::find(int k)
 {
 	node* current = m_top;
 	while (current && current->m_data != k)
 	{
 		current = current->m_next;
 	}
-	return current;
+		return current;
 } 
 
 bool list::empty()
@@ -187,7 +177,7 @@ void list::push_front(int m_data)
 	m_top = tmp;
 }
 
-void list::remove(int k)
+void list::remove(node* k)
 {
 	if (empty())
 	{
@@ -196,7 +186,7 @@ void list::remove(int k)
 	node* current = m_top;
 	node* prev = 0;	
 
-	while ( current != 0 && k != current->m_data) 
+	while ( current != 0 && k != current) 
 	{
 		prev = current;
 		current = current->m_next;
@@ -204,7 +194,7 @@ void list::remove(int k)
 
 	if (current)
 	{
-		assert(current->m_data == k);
+		assert(current == k);
 		if (prev)
 		{
 			prev->m_next = current->m_next;
@@ -223,6 +213,11 @@ void list::remove(int k)
 	
 void list::reverse()
 {
+	if (empty())
+	{
+		std::cout << "List empty" << std::endl;
+	}
+
 	node* current = m_top;
 	node* prev = 0;
 	node* m_next = 0;
@@ -240,7 +235,7 @@ void list::reverse()
 void list::print()
 {
 
-	if (m_top == 0)
+	if (empty())
 	{
 		std::cout << "List empty" << std::endl;
 		return;
@@ -255,45 +250,41 @@ void list::print()
 	std::cout << std::endl;
 }
 
-void list::splice(int k, list m)
+void list::splice(node* k, list & m )
 {
-	
-	node* prev = 0;
-	node* current = m_top;
-	node* next = 0;
-
-	if (empty())
+	if (m.empty())
 	{
-		m_top = m.m_top;
-	}
-
-	if ( m_end->m_data == k )
-	{
-		m_end->m_next = m.m_top;
-		m_end = m.m_end;
 		return;
 	}
-
-	while (current != 0 && k != current->m_data)
+	if (empty()) 
 	{
-		std::cout << "efwe" << std::endl;	
-		prev = current;
-		current = current->m_next;
-		next = current->m_next;
+		assert(k == 0);
+		m_top = m.m_top;
+		m_end = m.m_end;
 	}
-
-	if(current)
-	{
-		assert(current->m_data == k);
-		m.m_end->m_next = current->
-		current->m_next = m.m_top;
-		current = m.m_top;
-
-		while (current != 0)
+	if (k != 0)
+	{ 
+		if (m_end == k) 
 		{
-			prev = current;
-			current = current->m_next;
+			m_end->m_next = m.m_top;
+			m_end = m.m_end;
+		} 
+		else if (m_top == k) 
+		{
+			m.m_end->m_next = m_top->m_next;
+			m_top->m_next = m.m_top;
+		} 
+		else 
+		{
+			m.m_end->m_next = k->m_next;
+			k->m_next = m.m_top;
 		}
-		prev->m_next = next;
+		m.m_top = 0;
+		m.m_end = 0;
+	}
+	else 
+	{
+		std::cout << "Element didn't find" << std::endl;
+		return;
 	}
 }

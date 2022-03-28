@@ -10,21 +10,21 @@ class list
 		node *m_end;
 	public:
 		list();
+		~list();
 		void push_back(int);
 		void push_front(int);
-		void remove(int);
+		void remove(node*);
 		void reverse();
-		void splice (int, list);
+		void splice (node*, list &);
 		void print();
-		void front();
-		void back();
+		node* front();
+		node* back();
 		void pop_front();
 		void pop_back();
-		void insert(int, int);
-		void size();
-		void find(int);
-		void swap_node(node*, node*);
-		void swap(int, int);
+		void insert(node*, int);
+		int size();
+		node* find(int);
+		void swap(node*, node*);
 		void sort();
 		bool empty();
 		

@@ -1,0 +1,26 @@
+#ifndef LIST_HPP
+#define LIST_HPP
+
+#include "node.hpp"
+
+class list
+{
+	private:
+		node* m_top;
+		node* m_end;
+	public:
+		list();
+		~list();
+
+		node* front();
+		node* back();
+		node* find(int);
+
+		void print();
+		void push_front(int);
+		void insert(node*, int);
+
+		bool empty();
+};
+
+#endif

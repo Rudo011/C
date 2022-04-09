@@ -22,9 +22,11 @@ int main()
 	list_2.push_back(40);
 	list_2.print();
 
-	list_1.splice(list_1.find(5), list_2);
+	list_1.splice(list_1.back(), list_2);
 	list_1.print();
 	list_1.reverse();
+	list_1.print();
+	list_1.sort();
 	list_1.print();
 
 	std::cout << std::endl;

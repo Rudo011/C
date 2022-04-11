@@ -6,18 +6,14 @@ class queue
 {
 	private:
 		T* m_data;
-		int m_capacity;
-		int m_front;
-		int m_back;
-		int m_current;
+		size_t m_capacity;
+		size_t m_current;
 	public:
 		queue()
 		{
 			m_data = new T[1];
 			m_capacity = 1;
 			m_current = 0;
-			m_front = 0;
-			m_back = 0;
 		}
 
 		~queue()
@@ -25,10 +21,16 @@ class queue
 			delete [] m_data;
 		}
 	
-		void push_back(int);
+		void push(T);
+		void pop();
+		void print();
 		
 		bool empty();
 
+		T size();
+		T max_size();
+		T front();
+		T back();
 };
 
 #endif

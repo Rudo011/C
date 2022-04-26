@@ -3,19 +3,54 @@
 
 #include "node.hpp"
 
+template <typename T>
 class tree
 {
-	private:
-		node* m_root;
 	public:
-		tree();
-		~tree();
-	
+		node* m_root;
+	private:
+		void preorder(node* root)
+		{
+			if (root == NULL)
+			{
+				return;
+			}
+				std::cout << root->m_data << " ";
+				preorder(root->m_left);
+				preorder(root->m_right);
+		}
+		
+		int height(node* node)
+		{
+			if (empty())
+			{
+				return 0;
+			}
+			return node->m_height;
+		}
+		
+		int bal(node* node)
+		{
+			if (empty())
+			{
+				return 0;
+			}
+			return height(node->m_left) - height(node->m_right);
+		}
+	public:
+		tree()
+			:m_root(0)
+		{
+		}
+		void insert(const T&);
+		void remove(const T&);
+		void balance();
+		void print();
+		void getBalance();
+
 		bool empty();
 
-		void push_front(int);
-		void print();
-
+		
 };
 
 #endif

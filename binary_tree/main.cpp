@@ -1,16 +1,28 @@
 #include <iostream>
 
-#include "node.hpp"
-#include "tree.hpp"
+#include "tree_imp.hpp"
+#include "node_imp.hpp"
 
 int main()
 {
-	tree tree_1;
+	tree<int> t1;
 
-	tree_1.push_front(10);
+	t1.insert(21);
+	t1.insert(22);
+	t1.insert(3);
+	t1.insert(28);
+	t1.insert(10);
+	t1.insert(6);
+	t1.remove(22);
 
-	tree_1.print();
+	t1.getBalance();	
+
+	t1.print();
 
 	
+	
+
+
+
 	return 0;
 }

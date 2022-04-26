@@ -78,7 +78,7 @@ T vector<T>::get(size_t index)
 {
 	if (empty())
 	{ 	
-		return;
+		return -1;
 	}
 	if (index < m_current)
 	return m_data[index];
@@ -114,7 +114,7 @@ T vector<T>::begin()
 {
 	if (empty())
 	{
-		return;
+		return -1;
 	}
 
 	return m_data[0];
@@ -125,7 +125,7 @@ T vector<T>::end()
 {
 	if (empty())
 	{
-		return;
+		return -1;
 	}
 
 	return m_data[m_current];

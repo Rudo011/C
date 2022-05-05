@@ -23,22 +23,19 @@ void tree<T>::print()
 template <typename T>
 void tree<T>::insert(const T& data)
 {
-	m_root = inserter(m_root, data);
+	m_root = insertNode(m_root, data);
 }
 	
 template <typename T>
 void tree<T>::remove(const T& data)
 {
-	m_root = deleter(m_root, data);
+	m_root = deleteNode(m_root, data);
 }
 
 template <typename T>
-void tree<T>::getBalance()
+int tree<T>::getBalance()
 {
-	if (empty())
-	{
-		return;
-	}
 	int a = bal(m_root);
-	std::cout << "Balance = " << a << std::endl;
+
+	return a;
 }

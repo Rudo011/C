@@ -21,9 +21,15 @@ class node
 		node* leftRotate(node*);
 	
 		template <typename T>
+		node* newNode(T);
+		template <typename T>
 		node* inserter(node*, T);
 		template <typename T>
 		node* deleter(node*, T);
+		template <typename T>
+		node* deleteNode(node*, T);
+		template <typename T>
+		node* insertNode(node*, T);
 };
 
 #endif

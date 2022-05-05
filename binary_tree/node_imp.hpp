@@ -18,6 +18,18 @@ node::node(T data)
 {	
 }
 
+template <typename T>
+node* newNode(T data)
+{
+	node* tmp = new node();
+	tmp->m_data = data;	
+	tmp->m_left = 0;
+	tmp->m_right = 0;
+	tmp->m_height = 1;
+	
+	return (tmp);
+}
+
 int Max(int a, int b)
 {
 	return (a>b) ? a : b;
@@ -67,54 +79,6 @@ node* leftRotate(node* x)
 	return y;
 }
 
-template <typename T>
-node* inserter(node* tmp, T data)
-{
-	if (tmp == NULL)
-	{
-		return new node(data);
-	}
-	if (data < tmp->m_data)
-	{
-		tmp->m_left = inserter(tmp->m_left, data);
-	}
-	else
-	{
-		tmp->m_right = inserter(tmp->m_right, data);
-	}
-
-	tmp->m_height = 1 + Max(height(tmp->m_left), height(tmp->m_right));
-	int balance = getBalance(tmp);
-	
-	if (balance > 1)
-	{
-		if (data < tmp->m_left->m_data)
-		{
-			return rightRotate(tmp);
-		}	
-		else if (data > tmp->m_left->m_data)
-		{
-			tmp->m_left = leftRotate(tmp->m_left);	
-			return rightRotate(tmp);
-		}
-	}
-
-	if (balance < -1)
-	{
-		if (data > tmp->m_right->m_data)
-		{
-			return leftRotate(tmp);
-		}
-		else if (data < tmp->m_right->m_data)
-		{
-			tmp->m_right = rightRotate(tmp);
-			return leftRotate(tmp);
-		}
-	}
-	
-	return tmp;
-}
-
 node* minNode(node* tmp)
 {
 	node* current = tmp;
@@ -126,79 +90,119 @@ node* minNode(node* tmp)
 }
 
 template <typename T>
-node* deleter(node* tmp, T data)
+node *deleteNode(node *root, T key) 
 {
-	if (tmp == NULL)
+	if (root == NULL)
 	{
-		return tmp;
+		return root;
 	}
-	if (data < tmp->m_data)
+	if (key < root->m_data)
 	{
-		tmp->m_left = deleter(tmp->m_left, data);
+		root->m_left = deleteNode(root->m_left, key);
 	}
-	else if (data > tmp->m_data)
+	else if (key > root->m_data)
 	{
-		tmp->m_right = deleter(tmp->m_right, data);
-	}	
-	else
+		root->m_right = deleteNode(root->m_right, key);
+	}
+	else 
 	{
-		if ((tmp->m_left == NULL) || (tmp->m_right == NULL))
+		if ((root->m_left == NULL) || (root->m_right == NULL)) 
 		{
-			node* temp = tmp->m_left ? tmp->m_left : tmp->m_right;
-		
-			if (temp == NULL)
+      			node *temp = root->m_left ? root->m_left : root->m_right;
+      			if (temp == NULL) 
 			{
-				temp = tmp;
-				tmp = NULL;
-			}
-			else 
-			{
-				*tmp = *temp;
-			}
-			delete temp;
-		}
+        			temp = root;
+        			root = NULL;
+      			} 
+			else
+			
+				*root = *temp;
+      				free(temp);
+    		} 
 		else 
 		{
-			node* temp = minNode(tmp->m_right);
-			tmp->m_data = temp->m_data;
-			tmp->m_right = deleter(tmp->m_right, temp->m_data);
-		}
-	}
+      			node *temp = minNode(root->m_right);
+      			root->m_data = temp->m_data;
+    			root->m_right = deleteNode(root->m_right, temp->m_data);
+    		}
+  	}
 
-	if (tmp == NULL)
+	if (root == NULL)
+	return root;
+
+	root->m_height = 1 + Max(height(root->m_left), height(root->m_right));
+  	int balanceFactor = getBalance(root);
+  	if (balanceFactor > 1) 
 	{
-		return tmp;
-	}
-
-	tmp->m_height = 1 + Max(height(tmp->m_left), height(tmp->m_right));
-	int balance = getBalance(tmp);
-	
-	if (balance > 1)
+    		if (getBalance(root->m_left) >= 0) 
+		{
+      			return rightRotate(root);
+   		} 
+		else 
+		{
+      			root->m_left = leftRotate(root->m_left);
+      			return rightRotate(root);
+    		}
+  	}
+  	if (balanceFactor < -1) 
 	{
-		if (data < tmp->m_left->m_data)
+    		if (getBalance(root->m_right) <= 0) 
 		{
-			return rightRotate(tmp);
-		}	
-		else if (data > tmp->m_left->m_data)
+      			return leftRotate(root);
+    		} 
+		else 
 		{
-			tmp->m_left = leftRotate(tmp->m_left);	
-			return rightRotate(tmp);
-		}
-	}
+      			root->m_right = rightRotate(root->m_right);
+      			return leftRotate(root);
+    		}
+  	}
+  	return root;
+}
 
-	if (balance < -1)
+template <typename T>
+node *insertNode(node *node, T key) 
+{
+  	if (node == NULL)
 	{
-		if (data > tmp->m_right->m_data)
-		{
-			return leftRotate(tmp);
-		}
-		else if (data < tmp->m_right->m_data)
-		{
-			tmp->m_right = rightRotate(tmp);
-			return leftRotate(tmp);
-		}
+		return newNode(key);
 	}
-	
-	return tmp;
+  	if (key < node->m_data)
+	{
+    		node->m_left = insertNode(node->m_left, key);
+	}
+  	else if (key > node->m_data)
+	{
+    		node->m_right = insertNode(node->m_right, key);
+	}
+  	else
+    	return node;
 
+  	node->m_height = 1 + Max(height(node->m_left), height(node->m_right));
+  	int balanceFactor = getBalance(node);
+ 
+ 	if (balanceFactor > 1) 
+	{
+   		if (key < node->m_left->m_data) 
+		{
+      			return rightRotate(node);
+    		} 
+		else if (key > node->m_left->m_data) 
+		{
+      			node->m_left = leftRotate(node->m_left);
+      			return rightRotate(node);
+    		}
+  	}
+  	if (balanceFactor < -1) 
+	{
+    		if (key > node->m_right->m_data) 
+		{
+      			return leftRotate(node);
+  		} 
+		else if (key < node->m_right->m_data) 
+		{
+      			node->m_right = rightRotate(node->m_right);
+      			return leftRotate(node);
+    		}
+  	}
+  	return node;
 }

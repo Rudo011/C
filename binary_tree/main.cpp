@@ -6,23 +6,29 @@
 int main()
 {
 	tree<int> t1;
+	
+	size_t k = 1000000;
 
-	t1.insert(21);
-	t1.insert(22);
-	t1.insert(3);
-	t1.insert(28);
-	t1.insert(10);
-	t1.insert(6);
-	t1.remove(22);
-
-	t1.getBalance();	
+	for (int i = 1; i < k ; ++i)
+	{
+		t1.insert(i);
+	}
 
 	t1.print();
 
+	for (int i = 500000; i > 0; --i)
+	{
+		t1.remove(i);
+	}
+		
+	for (int i = 1; i < 600000; ++i)
+	{
+		t1.insert(i);
+	}
+
+	std::cout << "____________________________________" << std::endl;
+
+	t1.print();
 	
-	
-
-
-
 	return 0;
 }

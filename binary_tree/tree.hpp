@@ -15,8 +15,8 @@ class tree
 			{
 				return;
 			}
-				std::cout << root->m_data << " ";
 				preorder(root->m_left);
+				std::cout << root->m_data << " ";
 				preorder(root->m_right);
 		}
 		
@@ -46,11 +46,9 @@ class tree
 		void remove(const T&);
 		void balance();
 		void print();
-		void getBalance();
+		int getBalance();
 
 		bool empty();
-
-		
 };
 
 #endif

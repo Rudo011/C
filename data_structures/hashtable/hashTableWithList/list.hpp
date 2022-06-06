@@ -29,26 +29,15 @@ class list
 			}
 		}
 
+		node<T,K>* begin()
+		{
+			return m_top;
+		}
+
 		bool empty()
 		{
 			return m_top == 0;
 		}
-	
-		bool repeat(T key)
-		{
-			node<T,K>* current = this->m_top;
-	
-			return current->m_data->m_key == key;
-			
-			while(current != 0 || current->m_data->m_key == key)
-			{
-				node<T,K>* next = current->m_next;
-				current = next;
-			}
-		
-			return current->m_data->m_key == key;
-		}
-		
 
 		void insert_l(T key, K name)
 		{
@@ -61,7 +50,7 @@ class list
 				return;
 			}
 		
-			if (repeat(key))
+			if (find(key) != 0)
 			{
 				std::cout << "Error!" << std::endl;
 				return;
@@ -74,40 +63,57 @@ class list
 			m_top = tmp;
 		}
 	
-		info<T,K>* find(T key)
+		node<T,K>* find(T key)
 		{
 			if (empty())
 			{
 				return 0;
 			}
 			
-			else if (m_top == m_end)
-			{
-				return m_top->m_data;
-			}
 			else
 			{
-				node<T,K>* current = this->m_top;
+				node<T,K>* current = m_top;
 
-				while(current != 0 || current->m_data->m_key == key)
-				{
-					node<T,K>* next = current->m_next;
-					current = next;
+				while (current->m_data->m_key != key && current->m_next != 0)
+				{	
+					current = current->m_next;
 				}
 
-				if (current == 0)
+				assert(current);
+				if (current->m_data->m_key == key)
 				{
-					return 0;
+					return current;
 				}
 				else 	
 				{
-					assert(current->m_data->m_key == key);
-					return current->m_data;
+					return 0;
 				}
 			}
 		}
-				
-				
+	
+		void remove_n(T key)
+		{
+			node<T,K>* current = find(key);
+
+			if(current)
+			{
+				if (current == m_top)
+				{
+					m_top = current->m_next;	
+				}
+				else if (current == m_end)
+				{
+					m_end = current->m_prev;
+				}
+				else
+				{
+					current->m_prev->m_next = current->m_next;
+					current->m_next->m_prev = current->m_prev;
+				}
+				delete current;
+			}
+		}
+	
 			
 };
 

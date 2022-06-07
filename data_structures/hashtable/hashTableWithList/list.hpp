@@ -39,7 +39,7 @@ class list
 			return m_top == 0;
 		}
 
-		void insert_l(T key, K name)
+		void insert_l(const T& key, const K& name)
 		{
 			if (empty())
 			{
@@ -63,7 +63,7 @@ class list
 			m_top = tmp;
 		}
 	
-		node<T,K>* find(T key)
+		node<T,K>* find(const T& key)
 		{
 			if (empty())
 			{
@@ -91,7 +91,7 @@ class list
 			}
 		}
 	
-		void remove_n(T key)
+		void remove_n(const T& key)
 		{
 			node<T,K>* current = find(key);
 

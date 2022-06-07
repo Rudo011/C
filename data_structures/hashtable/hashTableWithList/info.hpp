@@ -10,7 +10,7 @@ class info
 		T m_key;
 		K m_name;
 	public:
-		info(T key, K name)
+		info(const T& key, const K& name)
 			:m_key(key)
 			,m_name(name)
 		{

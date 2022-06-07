@@ -25,12 +25,12 @@ class hash
 			return key % 1000;
 		}
 
-		void insert(T key, K name)
+		void insert(const T& key, const K& name)
 		{
 			m_map->m_data[indexFunc(key)].insert_l(key, name);
 		}
 
-		void search(T key)
+		void search(const T& key)
 		{
 			node<T,K>* tmp = m_map->m_data[indexFunc(key)].find(key);
 			
@@ -48,7 +48,7 @@ class hash
 			}
 		}
 	
-		void remove(T key)
+		void remove(const T& key)
 		{
 			m_map->m_data[indexFunc(key)].remove_n(key);
 		}
